@@ -1,10 +1,15 @@
 "use client";
 
-import { Col, Row } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 
 import styles from "./page.module.scss";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 export default function Home() {
+  const { user } = useUser();
+
+  console.log(user);
+
   return (
     <main className={styles.main}>
       <div className="px-4 py-5 mb-5 text-center">
@@ -15,12 +20,15 @@ export default function Home() {
             <button type="button" className="btn btn-primary btn-lg px-4 gap-3">
               Sign up
             </button>
-            <button
-              type="button"
-              className="btn btn-outline-secondary btn-lg px-4"
-            >
-              Log in
-            </button>
+            <a href="/api/auth/login">
+              <button
+                type="button"
+                className="btn btn-outline-secondary btn-lg px-4"
+              >
+                Log in
+              </button>
+            </a>
+            <a href="/api/auth/logout">Logout</a>
           </div>
         </Col>
       </div>
