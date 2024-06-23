@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import { UserProvider as Auth0Provider } from "@auth0/nextjs-auth0/client";
 
 import "./globals.scss";
-import { UserProvider } from "./[user]/useAuth";
+import { UserProvider } from "@/app/[userPK]/useAuth";
 import Navigation from "./_components/Navigation";
 import { Container } from "react-bootstrap";
 

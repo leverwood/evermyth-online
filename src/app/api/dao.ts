@@ -6,11 +6,16 @@ import {
   SubUserPK,
   User,
   UserPK,
+  initCampaign,
+  initUser,
+  isCampaign,
+  isUser,
 } from "./users/db-uc-types";
 import { ObjectPK, Object } from "./objects/db-object-types";
 import { decodeAndGunzip, gzipAndEncode } from "../_lib/gzip";
 
 export async function putSubUserMap(subUser: SubUserPK) {
+  console.log(`putSubUserMap`, subUser);
   if (!subUser.sub) {
     throw new Error("No sub provided");
   }
@@ -32,10 +37,13 @@ export async function getSubUser(sub: string): Promise<SubUserPK> {
       },
     })
     .promise();
-  return fetchResult.Item as SubUserPK;
+  const subUser = fetchResult.Item as SubUserPK;
+  console.log(`getSubUser`, subUser);
+  return subUser;
 }
 
 export async function deleteSubUser(sub: string) {
+  console.log(`deleteSubUser`, sub);
   await dynamoDB
     .delete({
       TableName: TABLE_SUB_USER,
@@ -47,6 +55,7 @@ export async function deleteSubUser(sub: string) {
 }
 
 export async function putUser(user: User) {
+  console.log(`putUser`, user);
   if (!user.pk) {
     throw new Error("No pk provided");
   }
@@ -57,7 +66,7 @@ export async function putUser(user: User) {
       data: await gzipAndEncode(JSON.stringify(user.data)),
     },
   };
-  await dynamoDB.put(putParams).promise();
+  const result = await dynamoDB.put(putParams).promise();
   return true;
 }
 
@@ -71,17 +80,26 @@ export async function getUser(pk: UserPK): Promise<User | null> {
     })
     .promise();
   if (!fetchResult.Item) return null;
-  const rawData =
-    fetchResult.Item?.data && typeof fetchResult.Item?.data === "string"
-      ? await decodeAndGunzip(fetchResult.Item?.data)
-      : "{}";
-  return {
+  let rawData: any = {};
+  try {
+    const rawDataStr =
+      fetchResult.Item?.data && typeof fetchResult.Item?.data === "string"
+        ? await decodeAndGunzip(fetchResult.Item?.data)
+        : "{}";
+    rawData = JSON.parse(rawDataStr);
+  } catch (e) {
+    console.error(`Couldn't parse user data`);
+  }
+  const user = initUser({
     pk,
-    data: JSON.parse(rawData) as User["data"],
-  };
+    data: rawData,
+  });
+  console.log(`getUser`, user);
+  return user;
 }
 
 export async function deleteUser(pk: UserPK) {
+  console.log(`deleteUser`, pk);
   const deleteParams = {
     TableName: TABLE_USERS_CAMPAIGNS,
     Key: {
@@ -93,6 +111,7 @@ export async function deleteUser(pk: UserPK) {
 }
 
 export async function putCampaign(campaign: Campaign) {
+  console.log(`putCampaign`, campaign);
   if (!campaign.pk) return false;
   const putParams = {
     TableName: TABLE_USERS_CAMPAIGNS,
@@ -105,7 +124,7 @@ export async function putCampaign(campaign: Campaign) {
   return true;
 }
 
-export async function getCampaign(pk: string): Promise<Campaign | null> {
+export async function getCampaign(pk: CampaignPK): Promise<Campaign | null> {
   const fetchResult = await dynamoDB
     .get({
       TableName: TABLE_USERS_CAMPAIGNS,
@@ -115,17 +134,55 @@ export async function getCampaign(pk: string): Promise<Campaign | null> {
     })
     .promise();
   if (!fetchResult.Item) return null;
-  const rawData =
+  const dataStr =
     fetchResult.Item?.data && typeof fetchResult.Item?.data === "string"
       ? await decodeAndGunzip(fetchResult.Item?.data)
       : "{}";
-  return {
+  const dataObj = JSON.parse(dataStr);
+  const campaign = initCampaign({
     pk,
-    data: JSON.parse(rawData) as Campaign["data"],
-  };
+    data: dataObj,
+  });
+  console.log(`getCampaign`, campaign);
+  return campaign;
+}
+
+export async function getCampaigns(pks: CampaignPK[]): Promise<Campaign[]> {
+  const fetchResult = await dynamoDB
+    .batchGet({
+      RequestItems: {
+        [TABLE_USERS_CAMPAIGNS]: {
+          Keys: pks.map((pk) => ({ pk })),
+        },
+      },
+    })
+    .promise();
+  if (!fetchResult.Responses) return [];
+
+  const campaigns = await Promise.all(
+    fetchResult.Responses[TABLE_USERS_CAMPAIGNS].map(async (item) => {
+      // format doesn't match
+      const rawData =
+        item.data && typeof item.data === "string"
+          ? await decodeAndGunzip(item.data)
+          : "{}";
+      const dataObj = JSON.parse(rawData);
+      return initCampaign({
+        pk: item.pk,
+        data: dataObj,
+      });
+    })
+  );
+
+  const nonNullCampaigns = campaigns.filter(
+    (campaign) => campaign !== null
+  ) as Campaign[];
+  console.log(`getCampaigns`, nonNullCampaigns);
+  return nonNullCampaigns;
 }
 
 export async function deleteCampaign(pk: string) {
+  console.log(`deleteCampaign`, pk);
   const deleteParams = {
     TableName: TABLE_USERS_CAMPAIGNS,
     Key: {
@@ -137,6 +194,7 @@ export async function deleteCampaign(pk: string) {
 }
 
 export async function putObject(object: Object) {
+  console.log(`putObject`, object);
   if (!object.pk || !object.campaign) {
     throw new Error("No pk or campaign provided");
   }
@@ -170,14 +228,19 @@ export async function getObject(
     fetchResult.Item?.data && typeof fetchResult.Item?.data === "string"
       ? await decodeAndGunzip(fetchResult.Item?.data)
       : "{}";
-  return {
+
+  // TODO: init object
+  const object = {
     pk,
     campaign,
     data: JSON.parse(rawData),
   } as Object;
+  console.log(`getObject`, object);
+  return object;
 }
 
 export async function deleteObject(pk: ObjectPK, campaign: CampaignPK) {
+  console.log(`deleteObject`, pk, campaign);
   const deleteParams = {
     TableName: TABLE_USERS_CAMPAIGNS,
     Key: {

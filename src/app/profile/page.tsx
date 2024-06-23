@@ -1,8 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-
-import { useAuth } from "@/app/[user]/useAuth";
+import { useAuth } from "@/app/[userPK]/useAuth";
 import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
 import { Alert, Button, Form } from "react-bootstrap";
 import Unauthorized from "../_components/Unauthorized";

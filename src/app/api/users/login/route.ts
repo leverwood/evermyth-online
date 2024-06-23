@@ -2,19 +2,18 @@ import { initUser } from "@/app/api/users/db-uc-types";
 import { APIResponse } from "@/app/api/db-types";
 import { getSubUser, getUser, putSubUserMap, putUser } from "../../dao";
 import { getSession } from "@auth0/nextjs-auth0";
+import { RESPOND_UNAUTHORIZED } from "../../api-constants";
 
 const SUPERUSERS = ["leverwood"];
 
 export async function GET(req: Request) {
-  const urlParams = new URL(req.url).searchParams;
   const session = await getSession();
 
   if (!session) {
-    // return unauthorized
-    return new Response(null, { status: 401 });
+    return RESPOND_UNAUTHORIZED;
   }
 
-  const { sub, email, userPK } = session.user;
+  const { sub, email } = session.user;
 
   try {
     // 1. query the SubUser Table
@@ -52,7 +51,7 @@ export async function GET(req: Request) {
     const userData = await getUser(subUser.userPK);
 
     if (!userData) {
-      // there is no user in the user table, make one
+      console.log(`there is no user in the user table, make one`);
       const newUser = initUser({ pk: subUser.userPK, data: { email } });
       await putUser(newUser);
       const response: APIResponse = {
@@ -68,12 +67,14 @@ export async function GET(req: Request) {
 
     // make superusers
     if (SUPERUSERS.includes(userData.pk) && !userData.data.isSuperuser) {
+      console.log(`making ${userData.pk} a superuser`);
       userData.data.isSuperuser = true;
       await putUser(userData);
     }
 
     // update email if it is blank
     if (!userData.data.email && email) {
+      console.log(`updating email for ${userData.pk}`);
       userData.data.email = email;
       await putUser(userData);
     }

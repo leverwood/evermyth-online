@@ -1,7 +1,7 @@
 "use client";
 
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
-import { useAuth } from "../[user]/useAuth";
+import { useAuth } from "@/app/[userPK]/useAuth";
 import Link from "next/link";
 
 function Navigation() {

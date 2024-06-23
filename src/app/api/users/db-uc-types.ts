@@ -50,6 +50,44 @@ export function isCampaign(obj: any): obj is Campaign {
   return obj.pk && obj.data && obj.data.type === "campaign";
 }
 
+export function initCampaign(obj: unknown): Campaign {
+  const BLANK_CAMPAIGN: Campaign = {
+    pk: "",
+    data: {
+      type: "campaign",
+      name: "",
+      owner: "",
+      rewards: [],
+      pcs: [],
+      creatures: [],
+      shops: [],
+      notes: [],
+    },
+  };
+  if (typeof obj !== "object" || !obj) {
+    return BLANK_CAMPAIGN;
+  }
+  const input = obj as any;
+  return {
+    pk: input.pk || "",
+    data:
+      typeof input.data === "object"
+        ? {
+            type: "campaign",
+            name: input.data.name || "",
+            owner: input.data.owner || "",
+            rewards: input.data.rewards || [],
+            pcs: input.data.pcs || [],
+            creatures: input.data.creatures || [],
+            shops: input.data.shops || [],
+            notes: input.data.notes || [],
+          }
+        : {
+            ...BLANK_CAMPAIGN.data,
+          },
+  };
+}
+
 export interface SubUserPK {
   sub: string;
   userPK: UserPK;
@@ -69,8 +107,18 @@ interface PartialUser extends Partial<Omit<User, "data">> {
   data?: Partial<User["data"]>;
 }
 
-export const initUser = (user: PartialUser): User => ({
-  ...NEW_USER,
-  ...user,
-  data: { ...NEW_USER.data, ...(user.data || {}) },
-});
+export const initUser = (obj: unknown): User => {
+  if (typeof obj !== "object" || !obj) {
+    return { ...NEW_USER };
+  }
+  const input = obj as any;
+  return {
+    pk: input.pk || "",
+    data: {
+      type: "user",
+      email: input.data.email || "",
+      isSuperuser: input.data.isSuperuser || false,
+      campaigns: input.data.campaigns || [],
+    },
+  };
+};
