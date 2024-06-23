@@ -3,13 +3,9 @@
 import { Col } from "react-bootstrap";
 
 import styles from "./page.module.scss";
-import { useUser } from "@auth0/nextjs-auth0/client";
+import Link from "next/link";
 
 export default function Home() {
-  const { user } = useUser();
-
-  console.log(user);
-
   return (
     <main className={styles.main}>
       <div className="px-4 py-5 mb-5 text-center">
@@ -29,6 +25,7 @@ export default function Home() {
               </button>
             </a>
             <a href="/api/auth/logout">Logout</a>
+            <Link href="/profile">Profile</Link>
           </div>
         </Col>
       </div>

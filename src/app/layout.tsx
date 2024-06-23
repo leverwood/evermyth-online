@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { UserProvider } from "@auth0/nextjs-auth0/client";
+import { UserProvider as Auth0Provider } from "@auth0/nextjs-auth0/client";
 
 import "./globals.scss";
+import { UserProvider } from "./[user]/useAuth";
+import Navigation from "./_components/Navigation";
+import { Container } from "react-bootstrap";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +22,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <UserProvider>{children}</UserProvider>
+        <Auth0Provider>
+          <UserProvider>
+            <Navigation />
+            <Container className="my-4">{children}</Container>
+          </UserProvider>
+        </Auth0Provider>
       </body>
     </html>
   );

@@ -1,5 +1,5 @@
-import { ObjectLookup } from "./db-object-types";
-import { DataBlobRaw } from "./db-types";
+import { DataBlobRaw } from "@/app/api/db-types";
+import { ObjectLookup } from "@/app/api/objects/db-object-types";
 
 export type Email = string;
 export type UserPK = string;
@@ -35,17 +35,22 @@ export interface Campaign
 }
 
 export function isUserPK(pk: string): pk is UserPK {
-  return !pk.includes("/");
+  return !!pk && !pk.includes("/");
 }
 
 export function isCampaignPK(pk: string): pk is CampaignPK {
-  return pk.split("/").length === 2;
+  return !!pk && pk.split("/").length === 2;
 }
 
 export function isUser(obj: any): obj is User {
-  return obj.data.type === "user";
+  return typeof obj.pk === "string" && obj.data && obj.data.type === "user";
 }
 
 export function isCampaign(obj: any): obj is Campaign {
-  return obj.data.type === "campaign";
+  return obj.pk && obj.data && obj.data.type === "campaign";
+}
+
+export interface SubUserPK {
+  sub: string;
+  userPK: UserPK;
 }

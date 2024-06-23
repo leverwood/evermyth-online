@@ -1,4 +1,5 @@
 import AWS from "aws-sdk";
+console.log("AWS_REGION", process.env.AWS_REGION);
 
 AWS.config.update({
   region: process.env.AWS_REGION,
