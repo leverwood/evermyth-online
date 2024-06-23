@@ -1,6 +1,6 @@
 import { APIResponse } from "../../db-types";
 import { UserPK } from "../db-uc-types";
-import { getUser } from "../../dao";
+import { getUser } from "../dao-users";
 
 export async function getUsernameExists(pk: UserPK): Promise<APIResponse> {
   try {

@@ -1,8 +1,9 @@
 import { initUser } from "@/app/api/users/db-uc-types";
 import { APIResponse } from "@/app/api/db-types";
-import { getSubUser, getUser, putSubUserMap, putUser } from "../../dao";
+import { getSubUser, putSubUserMap } from "@/app/api/dao";
+import { getUser, putUser } from "@/app/api/users/dao-users";
 import { getSession } from "@auth0/nextjs-auth0";
-import { RESPOND_UNAUTHORIZED } from "../../api-constants";
+import { RESPOND_UNAUTHORIZED } from "@/app/api/api-constants";
 
 const SUPERUSERS = ["leverwood"];
 

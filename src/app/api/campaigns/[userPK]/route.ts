@@ -1,5 +1,6 @@
 import { getSession } from "@auth0/nextjs-auth0";
-import { getCampaigns, getUser } from "../../dao";
+import { getCampaigns } from "../dao-campaigns";
+import { getUser } from "../../users/dao-users";
 import { RESPOND_NOT_FOUND, RESPOND_UNAUTHORIZED } from "../../api-constants";
 import { APIResponse } from "../../db-types";
 

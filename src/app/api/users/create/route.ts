@@ -2,7 +2,8 @@ import dynamoDB from "@/utils/aws";
 import { APIResponse } from "../../db-types";
 import { getUsernameExists } from "../exists/route";
 import { User, initUser } from "../db-uc-types";
-import { putSubUserMap, putUser } from "../../dao";
+import { putSubUserMap } from "../../dao";
+import { putUser } from "../dao-users";
 
 export async function POST(req: Request) {
   // Get the sub and username from the request body

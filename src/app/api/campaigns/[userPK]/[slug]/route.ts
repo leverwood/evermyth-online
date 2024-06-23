@@ -1,7 +1,7 @@
 import { getSession } from "@auth0/nextjs-auth0";
 import { NextRequest } from "next/server";
 import { isCampaign } from "@/app/api/users/db-uc-types";
-import { getCampaign, putCampaign } from "@/app/api/dao";
+import { getCampaign, putCampaign } from "../../dao-campaigns";
 
 import {
   RESPOND_BAD_REQUEST,

@@ -1,45 +1,16 @@
 import { Button } from "react-bootstrap";
 
-import LoadingPage from "../_components/LoadingPage";
 import Link from "next/link";
-import { getSession } from "@auth0/nextjs-auth0";
-import { getUser, getCampaigns } from "../api/dao";
-import Unauthorized from "../_components/Unauthorized";
-
-const getCampaignsServer = async () => {
-  const session = await getSession();
-  if (!session) {
-    return { status: 401 };
-  }
-
-  const { userPK } = session.user;
-  const user = await getUser(userPK);
-  if (!user) {
-    return { status: 404 };
-  }
-
-  if (!user.data.campaigns || user.data.campaigns.length === 0) {
-    return {
-      status: 200,
-      data: [],
-    };
-  }
-  const campaigns = await getCampaigns(user.data.campaigns);
-  return {
-    status: 200,
-    data: campaigns,
-  };
-};
+import { getCampaignsForUser } from "../api/campaigns/dao-campaigns";
 
 async function DashboardPage() {
-  const campaignResponse = await getCampaignsServer();
+  const campaignResponse = await getCampaignsForUser();
 
-  if (campaignResponse.status === 401) return <Unauthorized />;
-  if (campaignResponse.status === 404) return <div>Not found</div>;
-  if (!campaignResponse.data) return <LoadingPage />;
+  // TODO: handle unauthorized and errors
+  if (!campaignResponse.data) return <p>{campaignResponse.message}</p>;
+
   const campaigns = campaignResponse.data;
 
-  // TODO: fetch campaigns from the API
   return (
     <div>
       <h1>Dashboard</h1>
