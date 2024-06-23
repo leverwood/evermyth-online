@@ -2,38 +2,39 @@
 
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import { useAuth } from "../[user]/useAuth";
+import Link from "next/link";
 
 function Navigation() {
-  const authValues = useAuth();
-  const { user } = authValues;
-  console.log(`rending nav with user:`, user);
+  const { user, isLoadingAuth } = useAuth();
   return (
     <>
       <Navbar expand="lg" className="bg-body-tertiary">
         <Container>
-          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+          <Link href={"/"}>
+            <Navbar.Brand>React-Bootstrap</Navbar.Brand>
+          </Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
               {user ? (
                 <NavDropdown
                   title={user.pk ? user.pk : "My Account"}
                   id="basic-nav-dropdown"
                 >
-                  <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
+                  <Link href="/profile" passHref>
+                    <span className="dropdown-item">Profile</span>
+                  </Link>
                   <NavDropdown.Item href="/api/auth/logout">
                     Logout
                   </NavDropdown.Item>
                 </NavDropdown>
-              ) : (
+              ) : isLoadingAuth ? null : (
                 <Nav.Link href="/api/auth/login">Login</Nav.Link>
               )}
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <pre>{JSON.stringify(authValues, null, 2)}</pre>
     </>
   );
 }
