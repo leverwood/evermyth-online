@@ -2,21 +2,14 @@ import dynamoDB from "@/utils/aws";
 import { APIResponse } from "../../db-types";
 import { getUsernameExists } from "../exists/route";
 import { TABLE_SUB_USER, TABLE_USERS_CAMPAIGNS } from "../../api-constants";
-import { User } from "../db-uc-types";
+import { NEW_USER, User } from "../db-uc-types";
+import { putSubUserMap, putUser } from "../../dao";
 
 export async function POST(req: Request) {
   // Get the sub and username from the request body
   const { sub, pk, data } = await req.json();
 
-  const user: User = {
-    pk,
-    data: {
-      email: data.email,
-      type: "user",
-      isSuperuser: false,
-      campaigns: [],
-    },
-  };
+  const user: User = { ...NEW_USER, pk, data };
 
   if (!pk || !sub || !data) {
     const response: APIResponse = {
@@ -52,22 +45,13 @@ export async function POST(req: Request) {
 
   try {
     // update the sub/userPK map
-    await dynamoDB
-      .put({
-        TableName: TABLE_SUB_USER,
-        Item: {
-          sub,
-          userPK: pk,
-        },
-      })
-      .promise();
+    await putSubUserMap({
+      sub,
+      userPK: pk,
+    });
+
     // add the user data to the userscampaigns table
-    await dynamoDB
-      .put({
-        TableName: TABLE_USERS_CAMPAIGNS,
-        Item: user,
-      })
-      .promise();
+    await putUser(user);
 
     const response: APIResponse = {
       success: true,

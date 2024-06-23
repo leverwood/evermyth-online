@@ -118,7 +118,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
           }
           return null;
         });
-        // router.push("/dashboard");
+        router.push("/dashboard");
       }
       return result;
     },

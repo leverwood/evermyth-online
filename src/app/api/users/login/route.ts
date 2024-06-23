@@ -1,64 +1,9 @@
 import dynamoDB from "@/utils/aws";
 import { GetItemOutput } from "aws-sdk/clients/dynamodb";
-import { SubUserPK, User } from "@/app/api/users/db-uc-types";
+import { NEW_USER, SubUserPK, User } from "@/app/api/users/db-uc-types";
 import { APIResponse } from "@/app/api/db-types";
 import { TABLE_SUB_USER, TABLE_USERS_CAMPAIGNS } from "@/app/api/api-constants";
-
-// Set up a sub user key in the database the first time you try to login
-async function putSubUserMap(sub: string): Promise<APIResponse> {
-  try {
-    const subUser: SubUserPK = {
-      sub,
-      userPK: "",
-    };
-    const newUser: User = {
-      pk: "",
-      data: {
-        type: "user",
-        email: "",
-        campaigns: [],
-        isSuperuser: false,
-      },
-    };
-    const putParams = {
-      TableName: TABLE_SUB_USER,
-      Item: subUser,
-    };
-    await dynamoDB.put(putParams).promise();
-    return {
-      success: true,
-      message: "User created",
-      data: {
-        user: newUser,
-      },
-    };
-  } catch (e) {
-    return {
-      success: false,
-      message: "Error creating user",
-      error: e,
-      data: null,
-    };
-  }
-}
-
-async function getUserData(pk: string): Promise<User> {
-  const fetchResult: GetItemOutput = await dynamoDB
-    .get({
-      TableName: TABLE_USERS_CAMPAIGNS,
-      Key: {
-        pk,
-      },
-    })
-    .promise();
-
-  // TODO: check if item is of the right format
-
-  return {
-    pk,
-    data: fetchResult.Item?.data as User["data"],
-  };
-}
+import { getSubUser, getUser, putSubUserMap, putUser } from "../../dao";
 
 export async function GET(req: Request) {
   const urlParams = new URL(req.url).searchParams;
@@ -76,38 +21,27 @@ export async function GET(req: Request) {
   }
 
   try {
-    const fetchUserPK: GetItemOutput = await dynamoDB
-      .get({
-        TableName: TABLE_SUB_USER,
-        Key: {
-          sub,
-        },
-      })
-      .promise();
+    const subUser = await getSubUser(sub);
 
-    // the user doesn't exist yet
-    if (!fetchUserPK.Item) {
-      const createResult = await putSubUserMap(sub);
-      if (!createResult.success) throw createResult.error;
-
-      console.log("User created", createResult);
-      return Response.json(createResult);
-    }
-
-    // the user already exists, but doesn't have a username yet
-    const userPK = fetchUserPK.Item.userPK;
-
-    console.log("fetchUserPK:", fetchUserPK.Item.userPK); // Log the value to debug
-    if (!userPK) {
-      const newUser: User = {
-        pk: "",
+    // the subUser doesn't exist yet, make it
+    if (!subUser) {
+      await putSubUserMap({
+        sub,
+        userPK: "",
+      });
+      const response: APIResponse = {
+        success: true,
+        message: "New sub user map created, no username yet",
         data: {
-          type: "user",
-          email: "",
-          isSuperuser: false,
-          campaigns: [],
+          user: NEW_USER,
         },
       };
+      return Response.json(response);
+    }
+
+    // the subUser already exists, but doesn't have a username yet
+    if (!subUser.userPK) {
+      const newUser: User = { ...NEW_USER, pk: "" };
       const response: APIResponse = {
         success: true,
         message: "User exists, but no username",
@@ -119,10 +53,26 @@ export async function GET(req: Request) {
     }
 
     // user exists and has a username
-    const userData = await getUserData(userPK as string);
+    const userData = await getUser(subUser.userPK);
+
+    if (!userData) {
+      // there is no user in the user table, make one
+      const newUser: User = { ...NEW_USER, pk: subUser.userPK };
+      await putUser(newUser);
+      const response: APIResponse = {
+        success: true,
+        message:
+          "User exists in subUser table, but no data in user table. Created new.",
+        data: {
+          user: newUser,
+        },
+      };
+      return Response.json(response);
+    }
+
     const response: APIResponse = {
       success: true,
-      message: "User exists and has a username",
+      message: "User found",
       data: {
         user: userData,
       },

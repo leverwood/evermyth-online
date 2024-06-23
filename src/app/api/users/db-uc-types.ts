@@ -54,3 +54,13 @@ export interface SubUserPK {
   sub: string;
   userPK: UserPK;
 }
+
+export const NEW_USER: User = {
+  pk: "",
+  data: {
+    type: "user",
+    isSuperuser: false,
+    email: "",
+    campaigns: [],
+  },
+};

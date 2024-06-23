@@ -52,5 +52,5 @@ export interface Note
     title: string;
   }> {}
 
-export type ObjectRaw = Reward | PC | Creature | Shop | Note;
+export type Object = Reward | PC | Creature | Shop | Note;
 export type ObjectPK = string;

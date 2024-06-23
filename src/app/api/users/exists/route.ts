@@ -2,21 +2,14 @@ import { GetItemOutput } from "aws-sdk/clients/dynamodb";
 import { APIResponse } from "../../db-types";
 import { TABLE_USERS_CAMPAIGNS } from "../../api-constants";
 import dynamoDB from "@/utils/aws";
+import { UserPK } from "../db-uc-types";
+import { getUser } from "../../dao";
 
-export async function getUsernameExists(
-  username: string
-): Promise<APIResponse> {
+export async function getUsernameExists(pk: UserPK): Promise<APIResponse> {
   try {
-    const fetchResult: GetItemOutput = await dynamoDB
-      .get({
-        TableName: TABLE_USERS_CAMPAIGNS,
-        Key: {
-          pk: username,
-        },
-      })
-      .promise();
+    const user = await getUser(pk);
 
-    if (!fetchResult.Item) {
+    if (!user) {
       return {
         success: true,
         message: "Username is available",
