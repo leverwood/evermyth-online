@@ -1,26 +1,23 @@
 import { initUser } from "@/app/api/users/db-uc-types";
 import { APIResponse } from "@/app/api/db-types";
 import { getSubUser, getUser, putSubUserMap, putUser } from "../../dao";
+import { getSession } from "@auth0/nextjs-auth0";
 
 const SUPERUSERS = ["leverwood"];
 
 export async function GET(req: Request) {
   const urlParams = new URL(req.url).searchParams;
-  const sub = urlParams.get("sub");
-  const email = urlParams.get("email") || "";
+  const session = await getSession();
 
-  if (!sub) {
-    const response: APIResponse = {
-      success: false,
-      message: "No sub provided",
-      data: null,
-    };
-    return Response.json(response, {
-      status: 400,
-    });
+  if (!session) {
+    // return unauthorized
+    return new Response(null, { status: 401 });
   }
 
+  const { sub, email, userPK } = session.user;
+
   try {
+    // 1. query the SubUser Table
     const subUser = await getSubUser(sub);
 
     // the subUser doesn't exist yet, make it
@@ -33,7 +30,7 @@ export async function GET(req: Request) {
         success: true,
         message: "New sub user map created, no username yet",
         data: {
-          user: initUser({ pk: "", data: { email } }),
+          user: initUser({ data: { email } }),
         },
       };
       return Response.json(response);
@@ -45,7 +42,7 @@ export async function GET(req: Request) {
         success: true,
         message: "User exists, but no username",
         data: {
-          user: initUser({ pk: "", data: { email } }),
+          user: initUser({ data: { email } }),
         },
       };
       return Response.json(response);

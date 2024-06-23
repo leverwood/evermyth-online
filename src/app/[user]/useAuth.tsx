@@ -37,9 +37,9 @@ async function postCreateUser(sub: string, username: string, user: User) {
   return result;
 }
 
-async function getUserData(sub: string, email: string | null | undefined) {
-  if (!sub) return;
-  const res = await fetch(`/api/users/login?sub=${sub}&email=${email || ""}`);
+// Get the User object from the UsersCampaigns database
+async function getUserData() {
+  const res = await fetch(`/api/users/login`);
   return await res.json();
 }
 
@@ -56,7 +56,8 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
   const pathname = usePathname();
   const [user, setUser] = useState<User | null>(null);
-  const [dataFetching, setDataFetching] = useState(false);
+  // only fetch the data once, don't try again
+  const [dataFetched, setDataFetched] = useState(false);
   const [isLoadingAuth, setIsLoadingAuth] = useState(true);
   const [loggedIn, setLoggedIn] = useState<boolean | null>(null);
 
@@ -70,49 +71,54 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
     if (auth0Data) {
       setUser((prevUser) => {
         if (!prevUser) return null;
-        return { ...prevUser, email: auth0Data.email };
+        const newUser: User = {
+          ...prevUser,
+          pk: (auth0Data?.userPK as string) || "",
+          data: {
+            ...prevUser.data,
+            email: auth0Data.email || "",
+          },
+        };
+        return newUser;
       });
     }
   }, [auth0Data, isAuth0Loading]);
 
   useEffect(() => {
-    if (isAuth0Loading || !auth0Data?.sub || user || dataFetching) return;
+    if (isAuth0Loading || !auth0Data?.sub || user || dataFetched) return;
 
     // we got the auth0data, but not the user data
-    setDataFetching(true);
-    getUserData(auth0Data.sub, auth0Data?.email).then(
-      (response: APIResponse) => {
-        setIsLoadingAuth(false);
-        console.log(`getUserData response:`, response);
-        if (response.success && response.data.user) {
-          setLoggedIn(true);
+    setDataFetched(true);
+    getUserData().then((response: APIResponse) => {
+      setIsLoadingAuth(false);
+      console.log(`getUserData response:`, response);
+      if (response.success && response.data.user) {
+        setLoggedIn(true);
+        setUser(response.data.user);
+        // the user doesn't have a username
+        if (!response.data.user.pk) {
+          const user: User = {
+            pk: "",
+            data: {
+              type: "user",
+              email: auth0Data.email || "",
+              isSuperuser: false,
+              campaigns: [],
+            },
+          };
+          setUser(user);
+          if (pathname !== "/profile") router.push("/profile");
+          console.log(`forward to profile because doesn't have a username`);
+        } else if (isUser(response.data.user)) {
           setUser(response.data.user);
-          // the user doesn't have a username
-          if (!response.data.user.pk) {
-            const user: User = {
-              pk: "",
-              data: {
-                type: "user",
-                email: auth0Data.email || "",
-                isSuperuser: false,
-                campaigns: [],
-              },
-            };
-            setUser(user);
-            if (pathname !== "/profile") router.push("/profile");
-            console.log(`forward to profile because doesn't have a username`);
-          } else if (isUser(response.data.user)) {
-            setUser(response.data.user);
-          } else {
-            console.log(`response.data is not a user:`, response.data.user);
-          }
         } else {
-          console.error(response.message, response.error);
+          console.log(`response.data is not a user:`, response.data.user);
         }
-        setDataFetching(false);
+      } else {
+        console.error(response.message, response.error);
       }
-    );
-  }, [auth0Data, dataFetching, isAuth0Loading, pathname, router, user]);
+    });
+  }, [auth0Data, dataFetched, isAuth0Loading, pathname, router, user]);
 
   const createUsername = useCallback(
     async (username: string) => {
