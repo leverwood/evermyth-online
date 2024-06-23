@@ -55,7 +55,7 @@ export interface SubUserPK {
   userPK: UserPK;
 }
 
-export const NEW_USER: User = {
+const NEW_USER: User = {
   pk: "",
   data: {
     type: "user",
@@ -64,3 +64,13 @@ export const NEW_USER: User = {
     campaigns: [],
   },
 };
+
+interface PartialUser extends Partial<Omit<User, "data">> {
+  data?: Partial<User["data"]>;
+}
+
+export const initUser = (user: PartialUser): User => ({
+  ...NEW_USER,
+  ...user,
+  data: { ...NEW_USER.data, ...(user.data || {}) },
+});

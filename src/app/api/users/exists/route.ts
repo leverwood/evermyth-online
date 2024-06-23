@@ -1,7 +1,4 @@
-import { GetItemOutput } from "aws-sdk/clients/dynamodb";
 import { APIResponse } from "../../db-types";
-import { TABLE_USERS_CAMPAIGNS } from "../../api-constants";
-import dynamoDB from "@/utils/aws";
 import { UserPK } from "../db-uc-types";
 import { getUser } from "../../dao";
 

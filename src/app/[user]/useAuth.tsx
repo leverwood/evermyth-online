@@ -37,9 +37,9 @@ async function postCreateUser(sub: string, username: string, user: User) {
   return result;
 }
 
-async function getUserData(sub: string) {
+async function getUserData(sub: string, email: string | null | undefined) {
   if (!sub) return;
-  const res = await fetch(`/api/users/login?sub=${sub}`);
+  const res = await fetch(`/api/users/login?sub=${sub}&email=${email || ""}`);
   return await res.json();
 }
 
@@ -66,6 +66,13 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
       setIsLoadingAuth(false);
       setLoggedIn(false);
     }
+
+    if (auth0Data) {
+      setUser((prevUser) => {
+        if (!prevUser) return null;
+        return { ...prevUser, email: auth0Data.email };
+      });
+    }
   }, [auth0Data, isAuth0Loading]);
 
   useEffect(() => {
@@ -73,36 +80,38 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
 
     // we got the auth0data, but not the user data
     setDataFetching(true);
-    getUserData(auth0Data.sub).then((response: APIResponse) => {
-      setIsLoadingAuth(false);
-      console.log(`getUserData response:`, response);
-      if (response.success && response.data.user) {
-        setLoggedIn(true);
-        setUser(response.data.user);
-        // the user doesn't have a username
-        if (!response.data.user.pk) {
-          const user: User = {
-            pk: "",
-            data: {
-              type: "user",
-              email: auth0Data.email || "",
-              isSuperuser: false,
-              campaigns: [],
-            },
-          };
-          setUser(user);
-          if (pathname !== "/profile") router.push("/profile");
-          console.log(`forward to profile because doesn't have a username`);
-        } else if (isUser(response.data)) {
-          setUser(response.data);
+    getUserData(auth0Data.sub, auth0Data?.email).then(
+      (response: APIResponse) => {
+        setIsLoadingAuth(false);
+        console.log(`getUserData response:`, response);
+        if (response.success && response.data.user) {
+          setLoggedIn(true);
+          setUser(response.data.user);
+          // the user doesn't have a username
+          if (!response.data.user.pk) {
+            const user: User = {
+              pk: "",
+              data: {
+                type: "user",
+                email: auth0Data.email || "",
+                isSuperuser: false,
+                campaigns: [],
+              },
+            };
+            setUser(user);
+            if (pathname !== "/profile") router.push("/profile");
+            console.log(`forward to profile because doesn't have a username`);
+          } else if (isUser(response.data.user)) {
+            setUser(response.data.user);
+          } else {
+            console.log(`response.data is not a user:`, response.data.user);
+          }
         } else {
-          console.log(`response.data is not a user:`, response.data);
+          console.error(response.message, response.error);
         }
-      } else {
-        console.error(response.message, response.error);
+        setDataFetching(false);
       }
-      setDataFetching(false);
-    });
+    );
   }, [auth0Data, dataFetching, isAuth0Loading, pathname, router, user]);
 
   const createUsername = useCallback(

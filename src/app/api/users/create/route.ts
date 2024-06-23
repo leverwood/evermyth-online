@@ -1,15 +1,14 @@
 import dynamoDB from "@/utils/aws";
 import { APIResponse } from "../../db-types";
 import { getUsernameExists } from "../exists/route";
-import { TABLE_SUB_USER, TABLE_USERS_CAMPAIGNS } from "../../api-constants";
-import { NEW_USER, User } from "../db-uc-types";
+import { User, initUser } from "../db-uc-types";
 import { putSubUserMap, putUser } from "../../dao";
 
 export async function POST(req: Request) {
   // Get the sub and username from the request body
   const { sub, pk, data } = await req.json();
 
-  const user: User = { ...NEW_USER, pk, data };
+  const user: User = initUser({ pk, data });
 
   if (!pk || !sub || !data) {
     const response: APIResponse = {

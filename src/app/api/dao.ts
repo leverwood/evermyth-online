@@ -3,7 +3,6 @@ import { TABLE_SUB_USER, TABLE_USERS_CAMPAIGNS } from "./api-constants";
 import {
   Campaign,
   CampaignPK,
-  NEW_USER,
   SubUserPK,
   User,
   UserPK,

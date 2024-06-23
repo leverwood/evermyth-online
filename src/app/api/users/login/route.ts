@@ -1,13 +1,13 @@
-import dynamoDB from "@/utils/aws";
-import { GetItemOutput } from "aws-sdk/clients/dynamodb";
-import { NEW_USER, SubUserPK, User } from "@/app/api/users/db-uc-types";
+import { initUser } from "@/app/api/users/db-uc-types";
 import { APIResponse } from "@/app/api/db-types";
-import { TABLE_SUB_USER, TABLE_USERS_CAMPAIGNS } from "@/app/api/api-constants";
 import { getSubUser, getUser, putSubUserMap, putUser } from "../../dao";
+
+const SUPERUSERS = ["leverwood"];
 
 export async function GET(req: Request) {
   const urlParams = new URL(req.url).searchParams;
   const sub = urlParams.get("sub");
+  const email = urlParams.get("email") || "";
 
   if (!sub) {
     const response: APIResponse = {
@@ -33,7 +33,7 @@ export async function GET(req: Request) {
         success: true,
         message: "New sub user map created, no username yet",
         data: {
-          user: NEW_USER,
+          user: initUser({ pk: "", data: { email } }),
         },
       };
       return Response.json(response);
@@ -41,12 +41,11 @@ export async function GET(req: Request) {
 
     // the subUser already exists, but doesn't have a username yet
     if (!subUser.userPK) {
-      const newUser: User = { ...NEW_USER, pk: "" };
       const response: APIResponse = {
         success: true,
         message: "User exists, but no username",
         data: {
-          user: newUser,
+          user: initUser({ pk: "", data: { email } }),
         },
       };
       return Response.json(response);
@@ -57,7 +56,7 @@ export async function GET(req: Request) {
 
     if (!userData) {
       // there is no user in the user table, make one
-      const newUser: User = { ...NEW_USER, pk: subUser.userPK };
+      const newUser = initUser({ pk: subUser.userPK, data: { email } });
       await putUser(newUser);
       const response: APIResponse = {
         success: true,
@@ -70,6 +69,18 @@ export async function GET(req: Request) {
       return Response.json(response);
     }
 
+    // make superusers
+    if (SUPERUSERS.includes(userData.pk) && !userData.data.isSuperuser) {
+      userData.data.isSuperuser = true;
+      await putUser(userData);
+    }
+
+    // update email if it is blank
+    if (!userData.data.email && email) {
+      userData.data.email = email;
+      await putUser(userData);
+    }
+
     const response: APIResponse = {
       success: true,
       message: "User found",
@@ -77,6 +88,7 @@ export async function GET(req: Request) {
         user: userData,
       },
     };
+
     return Response.json(response);
   } catch (error: any) {
     const apiResponse: APIResponse = {
