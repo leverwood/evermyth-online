@@ -3,6 +3,7 @@ import { APIResponse } from "./db-types";
 export const TABLE_SUB_USER = "EMSubUsername";
 export const TABLE_USERS_CAMPAIGNS = "EMUsersCampaigns";
 export const TABLE_OBJECTS = "EMObjects";
+export const SUPERUSERS = ["lilia.everwood@gmail.com"];
 
 const unauthorized: APIResponse = {
   message: "401 Unauthorized",

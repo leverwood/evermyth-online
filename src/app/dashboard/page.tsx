@@ -2,9 +2,14 @@ import { Button } from "react-bootstrap";
 
 import Link from "next/link";
 import { getCampaignsForUser } from "../api/campaigns/dao-campaigns";
+import { getSession } from "@auth0/nextjs-auth0";
+import { redirect } from "next/navigation";
 
 async function DashboardPage() {
+  const session = await getSession();
   const campaignResponse = await getCampaignsForUser();
+
+  if (!session) redirect("/");
 
   // TODO: handle unauthorized and errors
   if (!campaignResponse.data) return <p>{campaignResponse.message}</p>;
@@ -13,7 +18,7 @@ async function DashboardPage() {
 
   return (
     <div>
-      <h1>Dashboard</h1>
+      <h1>Hello, {session.user.userPK}</h1>
       <h2>Campaigns</h2>
       {!campaigns.length ? (
         <p>You don&apos;t have any campaigns yet.</p>

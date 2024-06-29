@@ -4,46 +4,6 @@ import { CampaignPK, SubUserPK } from "@/app/api/users/db-uc-types";
 import { ObjectPK, Object } from "@/app/api/objects/db-object-types";
 import { decodeAndGunzip, gzipAndEncode } from "@/app/_lib/gzip";
 
-export async function putSubUserMap(subUser: SubUserPK) {
-  console.log(`putSubUserMap`, subUser);
-  if (!subUser.sub) {
-    throw new Error("No sub provided");
-  }
-  const putParams = {
-    TableName: TABLE_SUB_USER,
-    Item: subUser,
-  };
-  await dynamoDB.put(putParams).promise();
-
-  return true;
-}
-
-export async function getSubUser(sub: string): Promise<SubUserPK> {
-  const fetchResult = await dynamoDB
-    .get({
-      TableName: TABLE_SUB_USER,
-      Key: {
-        sub,
-      },
-    })
-    .promise();
-  const subUser = fetchResult.Item as SubUserPK;
-  console.log(`getSubUser`, subUser);
-  return subUser;
-}
-
-export async function deleteSubUser(sub: string) {
-  console.log(`deleteSubUser`, sub);
-  await dynamoDB
-    .delete({
-      TableName: TABLE_SUB_USER,
-      Key: {
-        sub,
-      },
-    })
-    .promise();
-}
-
 export async function putObject(object: Object) {
   console.log(`putObject`, object);
   if (!object.pk || !object.campaign) {
@@ -57,7 +17,11 @@ export async function putObject(object: Object) {
       data: await gzipAndEncode(JSON.stringify(object.data)),
     },
   };
-  await dynamoDB.put(putParams).promise();
+  await // The `.promise()` call might be on an JS SDK v2 client API.
+  // If yes, please remove .promise(). If not, remove this comment.
+  // The `.promise()` call might be on an JS SDK v2 client API.
+  // If yes, please remove .promise(). If not, remove this comment.
+  dynamoDB.put(putParams).promise();
   return true;
 }
 
@@ -65,7 +29,11 @@ export async function getObject(
   pk: ObjectPK,
   campaign: CampaignPK
 ): Promise<Object | null> {
-  const fetchResult = await dynamoDB
+  const fetchResult = await // The `.promise()` call might be on an JS SDK v2 client API.
+  // If yes, please remove .promise(). If not, remove this comment.
+  // The `.promise()` call might be on an JS SDK v2 client API.
+  // If yes, please remove .promise(). If not, remove this comment.
+  dynamoDB
     .get({
       TableName: TABLE_USERS_CAMPAIGNS,
       Key: {
@@ -99,6 +67,10 @@ export async function deleteObject(pk: ObjectPK, campaign: CampaignPK) {
       campaign,
     },
   };
-  await dynamoDB.delete(deleteParams).promise();
+  await // The `.promise()` call might be on an JS SDK v2 client API.
+  // If yes, please remove .promise(). If not, remove this comment.
+  // The `.promise()` call might be on an JS SDK v2 client API.
+  // If yes, please remove .promise(). If not, remove this comment.
+  dynamoDB.delete(deleteParams).promise();
   return true;
 }

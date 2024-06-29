@@ -1,7 +1,3 @@
-"use client";
-
-import { useAuth } from "@/app/[userPK]/useAuth";
-import Unauthorized from "@/app/_components/Unauthorized";
 import { Campaign } from "@/app/api/users/db-uc-types";
 import {
   ChangeEvent,
@@ -22,8 +18,7 @@ const createNewCampaign = (campaign: Campaign) => {
   });
 };
 
-function AddCampaignPage() {
-  const { user } = useAuth();
+async function AddCampaignPage() {
   const [name, setName] = useState("");
   const [slug, setSlug] = useState("");
   const [modifiedSlug, setModifiedSlug] = useState(false);
@@ -31,22 +26,21 @@ function AddCampaignPage() {
   const handleSubmit = useCallback(
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      if (!user) return;
-      createNewCampaign({
-        pk: `${user.pk}/${slug}`,
-        data: {
-          type: "campaign",
-          name,
-          owner: user.pk,
-          rewards: [],
-          pcs: [],
-          creatures: [],
-          shops: [],
-          notes: [],
-        },
-      });
+      // createNewCampaign({
+      //   pk: `${user.pk}/${slug}`,
+      //   data: {
+      //     type: "campaign",
+      //     name,
+      //     owner: user.pk,
+      //     rewards: [],
+      //     pcs: [],
+      //     creatures: [],
+      //     shops: [],
+      //     notes: [],
+      //   },
+      // });
     },
-    [name, slug, user]
+    [name, slug]
   );
 
   // when the user manually changes the slug
@@ -59,7 +53,7 @@ function AddCampaignPage() {
     if (!modifiedSlug) setSlug(name.toLowerCase().replace(/\s+/g, "-"));
   }, [modifiedSlug, name]);
 
-  if (!user) return <Unauthorized />;
+  // if (!user) return <Unauthorized />;
 
   return (
     <Form onSubmit={handleSubmit}>

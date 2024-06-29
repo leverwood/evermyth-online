@@ -8,7 +8,7 @@ import {
 import dynamoDB from "@/utils/aws";
 import { TABLE_USERS_CAMPAIGNS } from "@/app/api/api-constants";
 import { getSession } from "@auth0/nextjs-auth0";
-import { getUser } from "../users/dao-users";
+import { getUser } from "@/app/profile/dbaccess-user";
 import { APIResponse } from "../db-types";
 
 export async function putCampaign(campaign: Campaign) {
@@ -21,19 +21,17 @@ export async function putCampaign(campaign: Campaign) {
       data: await gzipAndEncode(JSON.stringify(campaign.data)),
     },
   };
-  await dynamoDB.put(putParams).promise();
+  await dynamoDB.put(putParams);
   return true;
 }
 
 export async function getCampaign(pk: CampaignPK): Promise<Campaign | null> {
-  const fetchResult = await dynamoDB
-    .get({
-      TableName: TABLE_USERS_CAMPAIGNS,
-      Key: {
-        pk,
-      },
-    })
-    .promise();
+  const fetchResult = await dynamoDB.get({
+    TableName: TABLE_USERS_CAMPAIGNS,
+    Key: {
+      pk,
+    },
+  });
   if (!fetchResult.Item) return null;
   const dataStr =
     fetchResult.Item?.data && typeof fetchResult.Item?.data === "string"
@@ -49,15 +47,13 @@ export async function getCampaign(pk: CampaignPK): Promise<Campaign | null> {
 }
 
 export async function getCampaigns(pks: CampaignPK[]): Promise<Campaign[]> {
-  const fetchResult = await dynamoDB
-    .batchGet({
-      RequestItems: {
-        [TABLE_USERS_CAMPAIGNS]: {
-          Keys: pks.map((pk) => ({ pk })),
-        },
+  const fetchResult = await dynamoDB.batchGet({
+    RequestItems: {
+      [TABLE_USERS_CAMPAIGNS]: {
+        Keys: pks.map((pk) => ({ pk })),
       },
-    })
-    .promise();
+    },
+  });
   if (!fetchResult.Responses) return [];
 
   const campaigns = await Promise.all(
@@ -92,7 +88,7 @@ export async function getCampaignsForUser(
   // if user is not provided, get campaigns for the current user
   if (!userPK) {
     const session = await getSession();
-    if (!session) {
+    if (!session || !session.user.userPK) {
       return {
         success: false,
         message: "Unauthorized",
@@ -133,6 +129,6 @@ export async function deleteCampaign(pk: string) {
       pk,
     },
   };
-  await dynamoDB.delete(deleteParams).promise();
+  await dynamoDB.delete(deleteParams);
   return true;
 }

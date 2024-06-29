@@ -2,7 +2,7 @@ import { getSession } from "@auth0/nextjs-auth0";
 import { initCampaign, isCampaign } from "../users/db-uc-types";
 import { NextRequest } from "next/server";
 import { putCampaign } from "./dao-campaigns";
-import { getUser, putUser } from "../users/dao-users";
+import { getUser, putUser } from "@/app/profile/dbaccess-user";
 import {
   RESPOND_BAD_REQUEST,
   RESPOND_FORBIDDEN,

@@ -1,3 +1,4 @@
+import { getSession } from "@auth0/nextjs-auth0/edge";
 import { NextResponse, type NextRequest } from "next/server";
 
 const needAuthRoutes = ["/profile"];
@@ -14,9 +15,10 @@ export async function middleware(req: NextRequest) {
     return Response.redirect(new URL("/api/auth/login", req.url));
   }
 
-  // if on homepage and logged in, redirect to dashboard
-  if (currentUser && req.nextUrl.pathname === "/") {
-    return Response.redirect(new URL("/dashboard", req.url));
+  // if you are logged in and don't have a username, redirect to set one
+  const session = await getSession(req, res);
+  if (session && !session.user?.userPK && req.nextUrl.pathname !== "/profile") {
+    return Response.redirect(new URL("/profile", req.url));
   }
 }
 
