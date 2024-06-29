@@ -1,7 +1,13 @@
 import { getSession } from "@auth0/nextjs-auth0/edge";
 import { NextResponse, type NextRequest } from "next/server";
 
-const needAuthRoutes = ["/profile"];
+const needAuthRoutes = [
+  "/profile",
+  "/dashboard",
+  "/campaigns",
+  "/creatures",
+  "/items",
+];
 
 export async function middleware(req: NextRequest) {
   const res = NextResponse.next();
@@ -12,13 +18,23 @@ export async function middleware(req: NextRequest) {
     req.nextUrl.pathname.startsWith(route)
   );
   if (!currentUser && needAuth) {
+    console.log(`Redirecting to login: ${req.nextUrl.pathname}`);
     return Response.redirect(new URL("/api/auth/login", req.url));
   }
 
   // if you are logged in and don't have a username, redirect to set one
   const session = await getSession(req, res);
-  if (session && !session.user?.userPK && req.nextUrl.pathname !== "/profile") {
-    return Response.redirect(new URL("/profile", req.url));
+  if (
+    session &&
+    !session.user?.userPK &&
+    req.nextUrl.pathname !== "/profile/username"
+  ) {
+    return Response.redirect(new URL("/profile/username", req.url));
+  }
+
+  // if you are logged in and try to hit the homepage, redirect to the dashboard
+  if (session && req.nextUrl.pathname === "/") {
+    return Response.redirect(new URL("/dashboard", req.url));
   }
 }
 

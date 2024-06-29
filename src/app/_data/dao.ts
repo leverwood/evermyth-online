@@ -1,7 +1,7 @@
 import dynamoDB from "@/utils/aws";
-import { TABLE_SUB_USER, TABLE_USERS_CAMPAIGNS } from "@/app/api/api-constants";
-import { CampaignPK, SubUserPK } from "@/app/api/users/db-uc-types";
-import { ObjectPK, Object } from "@/app/api/objects/db-object-types";
+import { TABLE_USERS_CAMPAIGNS } from "@/app/_data/api-constants";
+import { CampaignPK } from "@/app/_data/db-uc-types";
+import { ObjectPK, Object } from "@/app/_data/db-object-types";
 import { decodeAndGunzip, gzipAndEncode } from "@/app/_lib/gzip";
 
 export async function putObject(object: Object) {
@@ -29,19 +29,20 @@ export async function getObject(
   pk: ObjectPK,
   campaign: CampaignPK
 ): Promise<Object | null> {
-  const fetchResult = await // The `.promise()` call might be on an JS SDK v2 client API.
-  // If yes, please remove .promise(). If not, remove this comment.
-  // The `.promise()` call might be on an JS SDK v2 client API.
-  // If yes, please remove .promise(). If not, remove this comment.
-  dynamoDB
-    .get({
-      TableName: TABLE_USERS_CAMPAIGNS,
-      Key: {
-        pk,
-        campaign,
-      },
-    })
-    .promise();
+  const fetchResult =
+    await // The `.promise()` call might be on an JS SDK v2 client API.
+    // If yes, please remove .promise(). If not, remove this comment.
+    // The `.promise()` call might be on an JS SDK v2 client API.
+    // If yes, please remove .promise(). If not, remove this comment.
+    dynamoDB
+      .get({
+        TableName: TABLE_USERS_CAMPAIGNS,
+        Key: {
+          pk,
+          campaign,
+        },
+      })
+      .promise();
   if (!fetchResult.Item) return null;
   const rawData =
     fetchResult.Item?.data && typeof fetchResult.Item?.data === "string"

@@ -1,5 +1,6 @@
-import { DataBlobRaw } from "@/app/api/db-types";
-import { ObjectLookup } from "@/app/api/objects/db-object-types";
+import { DataBlobRaw } from "@/app/_data/db-types";
+import { ObjectLookup } from "@/app/_data/db-object-types";
+import { UserProfile } from "@auth0/nextjs-auth0/client";
 
 export type Email = string;
 export type UserPK = string;
@@ -122,3 +123,7 @@ export const initUser = (obj: unknown): User => {
     },
   };
 };
+
+export interface UserSession extends UserProfile {
+  userPK: UserPK;
+}

@@ -1,5 +1,5 @@
 import LoadingPage from "@/app/_components/LoadingPage";
-import { getCampaign } from "@/app/api/campaigns/dao-campaigns";
+import { getCampaign } from "@/app/_data/dao-campaigns";
 import { Button } from "react-bootstrap";
 
 async function CampaignPage({

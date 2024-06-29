@@ -1,11 +1,10 @@
 import { Col } from "react-bootstrap";
 
 import styles from "./page.module.scss";
-import { getSession } from "@auth0/nextjs-auth0";
-import { redirect } from "next/navigation";
+// import { getSession } from "@auth0/nextjs-auth0";
 
 export default async function Home() {
-  const session = await getSession();
+  // const session = await getSession();
 
   return (
     <main className={styles.main}>

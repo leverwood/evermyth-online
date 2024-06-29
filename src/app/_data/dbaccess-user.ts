@@ -3,8 +3,8 @@
 import { cache } from "react";
 import dynamoDB from "@/utils/aws";
 import { decodeAndGunzip, gzipAndEncode } from "@/app/_lib/gzip";
-import { TABLE_USERS_CAMPAIGNS } from "@/app/api/api-constants";
-import { User, UserPK, initUser } from "@/app/api/users/db-uc-types";
+import { TABLE_USERS_CAMPAIGNS } from "@/app/_data/api-constants";
+import { User, UserPK, initUser } from "@/app/_data/db-uc-types";
 
 export async function putUser(user: User) {
   console.log(`putUser`, user);

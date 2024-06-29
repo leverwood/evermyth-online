@@ -5,7 +5,7 @@ import { UserProvider as Auth0Provider } from "@auth0/nextjs-auth0/client";
 import "./globals.scss";
 import Navigation from "./_components/Navigation";
 import { Container } from "react-bootstrap";
-import { getSession } from "@auth0/nextjs-auth0";
+// import { getSession } from "@auth0/nextjs-auth0";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -18,13 +18,11 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await getSession();
-
   return (
     <html lang="en">
       <body className={inter.className}>
         <Auth0Provider>
-          <Navigation userPK={session?.user.userPK} />
+          <Navigation />
           <Container className="my-4">{children}</Container>
         </Auth0Provider>
       </body>

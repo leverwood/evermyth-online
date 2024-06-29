@@ -2,8 +2,10 @@
 
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import Link from "next/link";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
-function Navigation({ userPK }: { userPK: string }) {
+function Navigation() {
+  const { user } = useUser();
   return (
     <>
       <Navbar expand="lg" className="bg-body-tertiary">
@@ -14,8 +16,8 @@ function Navigation({ userPK }: { userPK: string }) {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              {userPK ? (
-                <NavDropdown title={userPK} id="basic-nav-dropdown">
+              {user ? (
+                <NavDropdown title={`My account`} id="basic-nav-dropdown">
                   <Link href="/profile" passHref>
                     <span className="dropdown-item">Profile</span>
                   </Link>

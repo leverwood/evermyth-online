@@ -1,26 +1,27 @@
 import { Button } from "react-bootstrap";
 
 import Link from "next/link";
-import { getCampaignsForUser } from "../api/campaigns/dao-campaigns";
-import { getSession } from "@auth0/nextjs-auth0";
-import { redirect } from "next/navigation";
+import DashboardTitle from "./DashboardTitle";
+// import { getCampaignsForUser } from "../_data/dao-campaigns";
+// import { getSession } from "@auth0/nextjs-auth0/edge";
+// import { redirect } from "next/navigation";
 
 async function DashboardPage() {
-  const session = await getSession();
-  const campaignResponse = await getCampaignsForUser();
-
-  if (!session) redirect("/");
+  // const session = await getSession();
+  // const campaignResponse = await getCampaignsForUser();
 
   // TODO: handle unauthorized and errors
-  if (!campaignResponse.data) return <p>{campaignResponse.message}</p>;
+  // if (!campaignResponse.data) return <p>{campaignResponse.message}</p>;
 
-  const campaigns = campaignResponse.data;
+  // const campaigns = campaignResponse.data;
+  //
+  // if (!session) return null;
 
   return (
     <div>
-      <h1>Hello, {session.user.userPK}</h1>
+      <DashboardTitle />
       <h2>Campaigns</h2>
-      {!campaigns.length ? (
+      {/* {!campaigns.length ? (
         <p>You don&apos;t have any campaigns yet.</p>
       ) : (
         campaigns.map((campaign) => (
@@ -30,7 +31,7 @@ async function DashboardPage() {
             </Link>
           </div>
         ))
-      )}
+      )} */}
       <Link href="/campaigns/add">
         <Button variant="primary">Create new</Button>
       </Link>

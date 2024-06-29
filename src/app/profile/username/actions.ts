@@ -1,12 +1,13 @@
 "use server";
 
 import { getSession, updateSession } from "@auth0/nextjs-auth0";
-import { UserPK, initUser } from "@/app/api/users/db-uc-types";
 import { redirect } from "next/navigation";
-import { SUPERUSERS } from "@/app/api/api-constants";
-import { getUser, putUser } from "./dbaccess-user";
-import { SetUsernameFormState } from "./SetUsername";
-import { putSubUserMap } from "./dbaccess-subuser";
+
+import { UserPK, initUser } from "@/app/_data/db-uc-types";
+import { SUPERUSERS } from "@/app/_data/api-constants";
+import { getUser, putUser } from "@/app/_data/dbaccess-user";
+import { SetUsernameFormState } from "@/app/profile/username/SetUsername";
+import { putSubUserMap } from "@/app/_data/dbaccess-subuser";
 
 export async function setUsername(
   prevState: SetUsernameFormState,
@@ -15,6 +16,11 @@ export async function setUsername(
   console.log("Setting username");
   const session = await getSession();
   const userPK = formData.get("userPK") as UserPK;
+
+  // TODO
+  if (!session) {
+    return prevState;
+  }
 
   // you need to be logged in to set a username
   if (!session) {
@@ -110,5 +116,11 @@ export async function setUsername(
     },
   });
 
-  redirect("/dashboard");
+  return {
+    ...prevState,
+    message: "Username set",
+    validity: "valid",
+  };
+
+  // redirect("/dashboard");
 }

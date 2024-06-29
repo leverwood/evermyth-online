@@ -5,6 +5,9 @@ const nextConfig = {
       fullUrl: true,
     },
   },
+  experimental: {
+    esmExternals: "loose",
+  },
 };
 
 export default nextConfig;

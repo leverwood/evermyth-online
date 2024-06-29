@@ -1,5 +1,5 @@
-import { UserPK, CampaignPK } from "@/app/api/users/db-uc-types";
-import { DataBlobRaw } from "@/app/api/db-types";
+import { UserPK, CampaignPK } from "@/app/_data/db-uc-types";
+import { DataBlobRaw } from "@/app/_data/db-types";
 
 export type ObjectLookup = string;
 
