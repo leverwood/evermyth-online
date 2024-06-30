@@ -8,12 +8,23 @@ import {
 import dynamoDB from "@/utils/aws";
 import { TABLE_USERS_CAMPAIGNS } from "@/app/api/api-constants";
 import { getSession } from "@auth0/nextjs-auth0";
-import { getUser } from "@/app/_data/user-dto";
+import { getUser, putUser } from "@/app/_data/user-dto";
 import { APIResponse } from "@/app/_data/db-types";
+
+import NodeCache from "node-cache";
+const campaignsCache = new NodeCache();
 
 export async function putCampaign(campaign: Campaign) {
   console.log(`putCampaign`, campaign);
   if (!campaign.pk) return false;
+  const userPK = campaign.pk.split("/")[0];
+  const user = await getUser(userPK);
+  if (!user) return false;
+
+  if (user.pk !== userPK) return false;
+
+  campaignsCache.del(`${userPK}-campaigns`);
+  campaignsCache.del(`${campaign.pk}`);
   const putParams = {
     TableName: TABLE_USERS_CAMPAIGNS,
     Item: {
@@ -26,6 +37,10 @@ export async function putCampaign(campaign: Campaign) {
 }
 
 export async function getCampaign(pk: CampaignPK): Promise<Campaign | null> {
+  if (campaignsCache.has(`${pk}`)) {
+    console.log(`getCampaign from cache`, pk);
+    return campaignsCache.get(`${pk}`) as Campaign;
+  }
   const fetchResult = await dynamoDB.get({
     TableName: TABLE_USERS_CAMPAIGNS,
     Key: {
@@ -42,11 +57,12 @@ export async function getCampaign(pk: CampaignPK): Promise<Campaign | null> {
     pk,
     data: dataObj,
   });
+  campaignsCache.set(`${pk}`, campaign);
   console.log(`getCampaign`, campaign);
   return campaign;
 }
 
-export async function getCampaigns(pks: CampaignPK[]): Promise<Campaign[]> {
+export const getCampaigns = async (pks: CampaignPK[]): Promise<Campaign[]> => {
   const fetchResult = await dynamoDB.batchGet({
     RequestItems: {
       [TABLE_USERS_CAMPAIGNS]: {
@@ -74,17 +90,17 @@ export async function getCampaigns(pks: CampaignPK[]): Promise<Campaign[]> {
   const nonNullCampaigns = campaigns.filter(
     (campaign) => campaign !== null
   ) as Campaign[];
-  console.log(`getCampaigns`, nonNullCampaigns);
-  return nonNullCampaigns;
-}
 
-interface CampaignsResponse extends APIResponse {
+  return nonNullCampaigns;
+};
+
+export interface CampaignsResponse extends APIResponse {
   data: Campaign[] | null;
 }
 
-export async function getCampaignsForUser(
+export const getCampaignsForUser = async (
   userPK?: UserPK
-): Promise<CampaignsResponse> {
+): Promise<CampaignsResponse> => {
   // if user is not provided, get campaigns for the current user
   if (!userPK) {
     const session = await getSession();
@@ -98,6 +114,15 @@ export async function getCampaignsForUser(
     userPK = session.user.userPK;
   }
   userPK = userPK as UserPK;
+
+  if (userPK && campaignsCache.has(`${userPK}-campaigns`)) {
+    console.log(`getCampaignsForUser from cache`, userPK);
+    return {
+      message: "Campaigns found",
+      success: true,
+      data: campaignsCache.get(`${userPK}-campaigns`) as Campaign[],
+    };
+  }
 
   const user = await getUser(userPK);
   if (!user) {
@@ -115,20 +140,54 @@ export async function getCampaignsForUser(
     };
   }
   const campaigns = await getCampaigns(user.data.campaigns);
+  campaignsCache.set(`${userPK}-campaigns`, campaigns);
   return {
     success: true,
     message: "Campaigns found",
     data: campaigns,
   };
-}
-export async function deleteCampaign(pk: string) {
+};
+export async function deleteCampaignDTO(pk: string) {
+  const user = await getUser(pk.split("/")[0]);
+
+  if (!user) {
+    return false;
+  }
+
+  // check it matches the session
+  const session = await getSession();
+  if (!session || !session.user.userPK) {
+    return false;
+  }
+  if (session.user.userPK !== user.pk) {
+    return false;
+  }
+
   console.log(`deleteCampaign`, pk);
+  campaignsCache.del(`${pk}`);
   const deleteParams = {
     TableName: TABLE_USERS_CAMPAIGNS,
     Key: {
       pk,
     },
   };
-  await dynamoDB.delete(deleteParams);
+  try {
+    await dynamoDB.delete(deleteParams);
+  } catch (e) {
+    console.error(`Couldn't delete campaign ${pk}`, e);
+    return false;
+  }
+
+  // update user
+  user.data.campaigns = user.data.campaigns.filter(
+    (campaignPK) => campaignPK !== pk
+  );
+  try {
+    await putUser(user);
+  } catch (e) {
+    console.error(`Couldn't update user ${user.pk}`, e);
+    return false;
+  }
+
   return true;
 }

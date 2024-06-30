@@ -44,3 +44,12 @@ const ok: APIResponse = {
   data: null,
 };
 export const RESPOND_OK = NextResponse.json(ok, { status: 200 });
+
+export const respondServerError = (message: string, data?: any) => {
+  const response: APIResponse = {
+    message,
+    success: false,
+    data: data,
+  };
+  return NextResponse.json(response, { status: 500 });
+};

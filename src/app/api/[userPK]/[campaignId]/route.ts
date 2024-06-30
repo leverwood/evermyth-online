@@ -8,21 +8,26 @@ import {
   RESPOND_NOT_FOUND,
   RESPOND_OK,
   RESPOND_UNAUTHORIZED,
+  respondServerError,
 } from "@/app/api/api-constants";
 import { APIResponse } from "@/app/_data/db-types";
-import { getCampaign, putCampaign } from "@/app/_data/campaigns-dto";
+import {
+  deleteCampaignDTO,
+  getCampaign,
+  putCampaign,
+} from "@/app/_data/campaigns-dto";
 
 // get a specific campaign
 export async function GET(
   request: Request,
-  { params }: { params: { userPK: string; slug: string } }
+  { params }: { params: { userPK: string; campaignId: string } }
 ) {
   const session = await getSession();
   if (!session) {
     return RESPOND_UNAUTHORIZED;
   }
 
-  const campaign = await getCampaign(`${params.userPK}/${params.slug}`);
+  const campaign = await getCampaign(`${params.userPK}/${params.campaignId}`);
   if (!campaign) {
     return RESPOND_NOT_FOUND;
   }
@@ -63,4 +68,30 @@ export async function PUT(req: NextRequest) {
 }
 
 // delete a specific campaign
-export async function DELETE() {}
+export async function DELETE(
+  request: Request,
+  { params }: { params: { userPK: string; campaignId: string } }
+) {
+  console.log(`delete`, params.userPK, params.campaignId);
+  const session = await getSession();
+  if (!session) {
+    return RESPOND_UNAUTHORIZED;
+  }
+
+  // check that the user in the session matches the campaign
+  const { userPK: loggedInUser } = session.user;
+  if (loggedInUser !== params.userPK) {
+    return RESPOND_FORBIDDEN;
+  }
+
+  const pk = `${params.userPK}/${params.campaignId}`;
+
+  // delete the campaign
+  try {
+    await deleteCampaignDTO(`${params.userPK}/${params.campaignId}`);
+  } catch (e) {
+    console.error(e);
+    return respondServerError("Error deleting campaign", pk);
+  }
+  return RESPOND_OK;
+}

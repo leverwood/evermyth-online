@@ -4,8 +4,10 @@ import dynamoDB from "@/utils/aws";
 import { decodeAndGunzip, gzipAndEncode } from "@/app/_lib/gzip";
 import { TABLE_USERS_CAMPAIGNS } from "@/app/api/api-constants";
 import { User, UserPK, initUser } from "@/app/_data/db-uc-types";
-import { getSession } from "@auth0/nextjs-auth0";
 import { userAuthorized } from "../_lib/auth";
+
+import NodeCache from "node-cache";
+const usersCache = new NodeCache();
 
 export async function putUser(user: User) {
   if (!user.pk) {
@@ -14,6 +16,7 @@ export async function putUser(user: User) {
   if (!userAuthorized(user.pk)) {
     throw new Error("Not authorized to put user");
   }
+  usersCache.del(`${user.pk}`);
 
   const putParams = {
     TableName: TABLE_USERS_CAMPAIGNS,
@@ -30,6 +33,11 @@ export async function getUser(pk: UserPK): Promise<User | null> {
   if (!pk) {
     throw new Error("No pk provided");
   }
+  if (usersCache.has(`${pk}`)) {
+    console.log(`getUser from cache`, pk);
+    return usersCache.get(`${pk}`) as User;
+  }
+
   const fetchResult = await dynamoDB.get({
     TableName: TABLE_USERS_CAMPAIGNS,
     Key: {
@@ -51,6 +59,7 @@ export async function getUser(pk: UserPK): Promise<User | null> {
     pk,
     data: rawData,
   });
+  usersCache.set(`${pk}`, user);
   console.log(`getUser`, user);
   return user;
 }
@@ -62,6 +71,8 @@ export async function deleteUser(pk: UserPK) {
   if (!userAuthorized(pk)) {
     throw new Error("Not authorized to delete user");
   }
+  console.log(`deleteUser`, pk);
+  usersCache.del(`${pk}`);
   const deleteParams = {
     TableName: TABLE_USERS_CAMPAIGNS,
     Key: {

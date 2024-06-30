@@ -25,7 +25,6 @@ export interface Campaign
   extends UsersCampaignsCommon<{
     type: "campaign";
     name: string;
-    owner: UserPK;
     rewards: ObjectLookup[];
     pcs: ObjectLookup[];
     creatures: ObjectLookup[];
@@ -57,7 +56,6 @@ export function initCampaign(obj: unknown): Campaign {
     data: {
       type: "campaign",
       name: "",
-      owner: "",
       rewards: [],
       pcs: [],
       creatures: [],
@@ -76,7 +74,6 @@ export function initCampaign(obj: unknown): Campaign {
         ? {
             type: "campaign",
             name: input.data.name || "",
-            owner: input.data.owner || "",
             rewards: input.data.rewards || [],
             pcs: input.data.pcs || [],
             creatures: input.data.creatures || [],
