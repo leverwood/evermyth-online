@@ -2,6 +2,7 @@ import DashboardTitle from "./DashboardTitle";
 import { getSession } from "@auth0/nextjs-auth0/edge";
 import { redirect } from "next/navigation";
 import CampaignList from "./CampaignList";
+import { Suspense } from "react";
 
 async function DashboardPage() {
   const session = await getSession();
@@ -12,7 +13,9 @@ async function DashboardPage() {
   return (
     <div>
       <DashboardTitle userPK={session.user.userPK} />
-      <CampaignList />
+      <Suspense fallback={<div>Loading...</div>}>
+        <CampaignList />
+      </Suspense>
     </div>
   );
 }

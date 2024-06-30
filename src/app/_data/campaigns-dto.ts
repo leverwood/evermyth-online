@@ -141,6 +141,15 @@ export const getCampaignsForUser = async (
   }
   const campaigns = await getCampaigns(user.data.campaigns);
   campaignsCache.set(`${userPK}-campaigns`, campaigns);
+
+  // remove campaign ids that don't exist
+  if (campaigns.length !== user.data.campaigns.length) {
+    user.data.campaigns = user.data.campaigns.filter((campaignPK) =>
+      campaigns.find((campaign) => campaign.pk === campaignPK)
+    );
+    putUser(user);
+  }
+
   return {
     success: true,
     message: "Campaigns found",

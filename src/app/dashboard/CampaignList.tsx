@@ -33,7 +33,7 @@ const CampaignList = ({}: CampaignListProps) => {
     const getCampaigns = async () => {
       const result = await fetchCampaigns();
       if (result.success) {
-        setCampaigns(result.data);
+        setCampaigns(result.data || []);
       }
     };
     getCampaigns();
@@ -42,7 +42,9 @@ const CampaignList = ({}: CampaignListProps) => {
   return (
     <div>
       <h2>Campaigns</h2>
-      {!campaigns || !campaigns.length ? (
+      {!campaigns ? (
+        <p>Loading...</p>
+      ) : !campaigns.length ? (
         <p>You don&apos;t have any campaigns yet.</p>
       ) : (
         campaigns.map((campaign) => (
