@@ -31,12 +31,7 @@ export async function middleware(req: NextRequest) {
     !session.user?.userPK &&
     req.nextUrl.pathname !== "/profile/username"
   ) {
-    // double check you don't have a username
-    // const subUser = await getSubUser(session.user.sub);
-    // if (subUser?.userPK) {
-    //   console.log(`Setting userPK in session: ${subUser.userPK}`);
-    // } else
-
+    // TODO: double check you don't have a username
     return Response.redirect(new URL("/profile/username", req.url));
   }
 

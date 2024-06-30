@@ -1,20 +1,14 @@
 "use client";
 
 import { useUser } from "@auth0/nextjs-auth0/client";
-import { UserSession } from "@/app/_data/db-uc-types";
-import { getUsernameFromSession } from "../profile/actions";
-import { useEffect, useState } from "react";
+import { UserSession } from "../_data/db-uc-types";
 
-export default function DashboardTitle() {
-  const [username, setUsername] = useState<string | null>(null);
-
-  useEffect(() => {
-    getUsernameFromSession().then((username) => setUsername(username));
-  }, []);
+export default function DashboardTitle({ userPK }: { userPK: string }) {
+  const { user } = useUser();
 
   return (
     <main>
-      <h1>Hello, {username}</h1>
+      <h1>Hello, {userPK}</h1>
     </main>
   );
 }

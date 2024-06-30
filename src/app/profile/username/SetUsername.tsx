@@ -4,11 +4,8 @@ import { Alert, Button, Form } from "react-bootstrap";
 import { useState } from "react";
 import { APIResponse } from "@/app/_data/db-types";
 import { useRouter } from "next/navigation";
-import { useUser } from "@auth0/nextjs-auth0/client";
-import { updateSession } from "@auth0/nextjs-auth0";
 
 function SetUsername() {
-  const session = useUser();
   const router = useRouter();
   const [message, setMessage] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -67,7 +64,6 @@ function SetUsername() {
       <Button type="submit" disabled={submitting}>
         {submitting ? "Submitting..." : "Submit"}
       </Button>
-      <pre>{JSON.stringify(session?.user, null, 2)}</pre>
     </Form>
   );
 }
