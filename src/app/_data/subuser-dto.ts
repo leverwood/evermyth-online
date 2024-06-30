@@ -1,5 +1,5 @@
 import dynamoDB from "@/utils/aws";
-import { TABLE_SUB_USER } from "@/app/_data/api-constants";
+import { TABLE_SUB_USER } from "@/app/api/api-constants";
 import { SubUserPK } from "@/app/_data/db-uc-types";
 
 export const putSubUserMap = async (sub: SubUserPK) => {

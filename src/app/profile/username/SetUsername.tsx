@@ -1,82 +1,54 @@
 "use client";
 
-import { Button, Form } from "react-bootstrap";
-import { setUsername } from "./actions";
-import { useFormStatus, useFormState } from "react-dom";
-
-export interface SetUsernameFormState {
-  message: string;
-  validity: "valid" | "invalid" | null;
-}
-
-const INITIAL_FORM_STATE: SetUsernameFormState = {
-  message: "",
-  validity: null,
-};
-
-function Submit() {
-  const status = useFormStatus();
-  return (
-    <Button type="submit" disabled={status.pending}>
-      Submit
-    </Button>
-  );
-}
+import { Alert, Button, Form } from "react-bootstrap";
+import { useState } from "react";
+import { APIResponse } from "@/app/_data/db-types";
+import { useRouter } from "next/navigation";
+import { useUser } from "@auth0/nextjs-auth0/client";
+import { updateSession } from "@auth0/nextjs-auth0";
 
 function SetUsername() {
-  const [formState, formAction] = useFormState(setUsername, INITIAL_FORM_STATE);
+  const session = useUser();
+  const router = useRouter();
+  const [message, setMessage] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [validity, setValidity] = useState<null | "valid" | "invalid">(null);
 
-  // const [checkingIfExists, setCheckingIfExists] = useState(false);
-  // const [usernameExists, setUsernameExists] = useState<boolean | null>(null);
-  // const [lastCheckedUsername, setLastCheckedUsername] = useState("");
-  // const formRef = useRef<HTMLFormElement>(null);
-  // const [formValid, setFormValid] = useState(false);
-  // const [helpText, setHelpText] = useState<string>("");
-  // const [submitting, setSubmitting] = useState(false);
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    setSubmitting(true);
+    event.preventDefault();
+    const username = event.currentTarget.userPK.value;
 
-  // const isInvalid = !!username && (usernameExists === true || !formValid);
-  // const isValid =
-  //   !!username && !usernameExists && !checkingIfExists && formValid;
+    const response = await fetch("/api/user", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+      }),
+    });
+    try {
+      const result: APIResponse = await response.json();
+      console.log(result);
+      if (result.success) {
+        router.push("/dashboard");
+        return;
+      } else {
+        setMessage(result.message);
+        setValidity("invalid");
+      }
+    } catch (e) {
+      console.error(e);
+      setMessage("An error occurred");
+      setValidity("invalid");
+    }
 
-  // useEffect(() => {
-  //   if (formRef.current) {
-  //     const isValid = formRef.current.checkValidity();
-  //     setFormValid(isValid);
-  //   }
-  // }, [username]);
-
-  // useEffect(() => {
-  //   if (!username) {
-  //     setUsernameExists(null);
-  //     return;
-  //   }
-
-  //   // if I am not yet checking if this username exists, then check
-  //   if (
-  //     username &&
-  //     !checkingIfExists &&
-  //     username !== lastCheckedUsername &&
-  //     formValid
-  //   ) {
-  //     setHelpText("Checking if username already exists...");
-  //     setCheckingIfExists(true);
-  //     setUsernameExists(null);
-  //     setLastCheckedUsername(username);
-  //     // getUserExists(username).then((exists) => {
-  //     //   if (exists) {
-  //     //     setHelpText("❌ Username already exists");
-  //     //   } else {
-  //     //     setHelpText("✅ Username is available");
-  //     //   }
-  //     //   setUsernameExists(exists);
-  //     //   setCheckingIfExists(false);
-  //     // });
-  //   }
-  //   // I am already checking
-  // }, [checkingIfExists, formValid, lastCheckedUsername, username]);
+    setSubmitting(false);
+  };
 
   return (
-    <Form action={formAction}>
+    <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3">
         <Form.Label>Create a username</Form.Label>
         <Form.Control
@@ -85,13 +57,17 @@ function SetUsername() {
           required
           minLength={3}
           maxLength={20}
-          pattern="^[a-zA-Z0-9]*$"
-          isInvalid={formState?.validity === "invalid"}
-          isValid={formState?.validity === "valid"}
+          pattern="^[a-zA-Z0-9_]*$"
+          isInvalid={validity === "invalid"}
+          isValid={validity === "valid"}
         />
       </Form.Group>
-      {formState.message}
-      <Submit />
+      {message}
+      <Alert variant="info">Once this is set, it cannot be changed.</Alert>
+      <Button type="submit" disabled={submitting}>
+        {submitting ? "Submitting..." : "Submit"}
+      </Button>
+      <pre>{JSON.stringify(session?.user, null, 2)}</pre>
     </Form>
   );
 }

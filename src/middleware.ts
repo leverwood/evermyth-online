@@ -1,5 +1,7 @@
 import { getSession } from "@auth0/nextjs-auth0/edge";
 import { NextResponse, type NextRequest } from "next/server";
+import { getSubUser } from "./app/_data/subuser-dto";
+import { updateSession } from "@auth0/nextjs-auth0";
 
 const needAuthRoutes = [
   "/profile",
@@ -29,6 +31,12 @@ export async function middleware(req: NextRequest) {
     !session.user?.userPK &&
     req.nextUrl.pathname !== "/profile/username"
   ) {
+    // double check you don't have a username
+    // const subUser = await getSubUser(session.user.sub);
+    // if (subUser?.userPK) {
+    //   console.log(`Setting userPK in session: ${subUser.userPK}`);
+    // } else
+
     return Response.redirect(new URL("/profile/username", req.url));
   }
 

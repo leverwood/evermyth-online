@@ -6,10 +6,11 @@ import {
   handleCallback,
 } from "@auth0/nextjs-auth0";
 import { NextRequest, NextResponse } from "next/server";
-import { getSubUser, putSubUserMap } from "@/app/_data/dbaccess-subuser";
+import { getSubUser, putSubUserMap } from "@/app/_data/subuser-dto";
 import { initUser } from "@/app/_data/db-uc-types";
-import { getUser, putUser } from "@/app/_data/dbaccess-user";
-import { SUPERUSERS } from "@/app/_data/api-constants";
+import { getUser, putUser } from "@/app/_data/user-dto";
+import { SUPERUSERS } from "@/app/api/api-constants";
+
 
 // @see https://github.com/auth0/nextjs-auth0/issues/1600
 const afterCallback: AfterCallbackAppRoute = async (req, session, state) => {

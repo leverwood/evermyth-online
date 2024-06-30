@@ -6,9 +6,9 @@ import {
   initCampaign,
 } from "@/app/_data/db-uc-types";
 import dynamoDB from "@/utils/aws";
-import { TABLE_USERS_CAMPAIGNS } from "@/app/_data/api-constants";
+import { TABLE_USERS_CAMPAIGNS } from "@/app/api/api-constants";
 import { getSession } from "@auth0/nextjs-auth0";
-import { getUser } from "@/app/_data/dbaccess-user";
+import { getUser } from "@/app/_data/user-dto";
 import { APIResponse } from "@/app/_data/db-types";
 
 export async function putCampaign(campaign: Campaign) {

@@ -1,16 +1,20 @@
 "use server";
 
-import { cache } from "react";
 import dynamoDB from "@/utils/aws";
 import { decodeAndGunzip, gzipAndEncode } from "@/app/_lib/gzip";
-import { TABLE_USERS_CAMPAIGNS } from "@/app/_data/api-constants";
+import { TABLE_USERS_CAMPAIGNS } from "@/app/api/api-constants";
 import { User, UserPK, initUser } from "@/app/_data/db-uc-types";
+import { getSession } from "@auth0/nextjs-auth0";
+import { userAuthorized } from "../_lib/auth";
 
 export async function putUser(user: User) {
-  console.log(`putUser`, user);
   if (!user.pk) {
     throw new Error("No pk provided");
   }
+  if (!userAuthorized(user.pk)) {
+    throw new Error("Not authorized to put user");
+  }
+
   const putParams = {
     TableName: TABLE_USERS_CAMPAIGNS,
     Item: {
@@ -55,7 +59,9 @@ export async function deleteUser(pk: UserPK) {
   if (!pk) {
     throw new Error("No pk provided");
   }
-  console.log(`deleteUser`, pk);
+  if (!userAuthorized(pk)) {
+    throw new Error("Not authorized to delete user");
+  }
   const deleteParams = {
     TableName: TABLE_USERS_CAMPAIGNS,
     Key: {
