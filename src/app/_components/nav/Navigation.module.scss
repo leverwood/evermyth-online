@@ -1,0 +1,187 @@
+@import "@/app/_components/variables";
+
+$containerPaddingXS: $unit;
+$containerPaddingSM: $unit * 2;
+$logoPadding: $unit;
+$logoWidth: 56px;
+$campaignPositionXS: $containerPaddingXS + $logoPadding + $logoWidth + ($unit * 2);
+$campaignPositionSM: $containerPaddingSM + $logoPadding + $logoWidth + ($unit * 2);
+
+.root {
+  background-color: $paper2;
+}
+
+.logoLink {
+  padding: $logoPadding;
+  filter:hue-rotate();
+  display: flex;
+  gap: $unit;
+  align-items: center;
+
+
+  .logo path, .logoText path {
+    fill: $ink7;
+    stroke: $ink7;
+  }
+
+  &:hover {
+    .logo path, .logoText path  {
+      fill: $ink6;
+      stroke: $ink6;
+    }
+  }
+}
+
+.logo {
+  height: auto;
+  width: $logoWidth;
+}
+
+.logoText {
+  height: $unit * 2.5;
+  width: auto;
+  margin-top: 5px;
+}
+
+.container {
+  width: 100%;
+  box-sizing: content-box;
+  max-width: $breakpoint-xl;
+  margin: 0 auto;
+  padding: 0 $containerPaddingXS;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+
+  @media (min-width: $breakpoint-sm) {
+    padding: 0 $containerPaddingSM;
+  }
+}
+
+.hamburger {
+  color: $ink8;
+  text-decoration: none;
+  font-family: $font-serif;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  background: transparent;
+  border: none;
+  outline: none;
+
+  &:hover, &:active {
+    color: $ink7;
+  }
+}
+
+.username {
+  display: none;
+
+  @media (min-width: $breakpoint-md) {
+    display: inline-block;
+  }
+}
+
+
+
+.campaignBar {
+  position: relative;
+  background-color: $ink6;
+  flex-grow: 1;
+  color: $paper0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+
+  @media (min-width: $breakpoint-sm) {
+    position: absolute;
+    top: $unit * 2;
+    left: $campaignPositionXS;
+    padding-right: $unit * 2;
+  }
+
+  a {
+    color: $paper0;
+    text-decoration: none;
+  }
+}
+
+.campaignLinkList {
+  order: 2;
+  flex-basis: 100%;
+  position: absolute;
+  top: 100%;
+  background-color: $ink6;
+  width: 100%;
+  left: 0;
+  display: none;
+
+  padding: 0 $unit $unit;
+  flex-direction: column;
+ 
+  @media (min-width: $breakpoint-sm) {
+    position: static;
+    width: auto;
+    flex-basis: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    padding: 0;
+    align-items: stretch;
+  }
+}
+
+.showList .campaignLinkList {
+  display: flex;
+}
+
+.campaignName {
+  font-family: $font-serif;
+  font-size: $unit * 2.5;
+  font-weight: bold;
+  padding: $unit $unit * 2;
+
+  &:hover, &:active {
+    color: $paper1;
+  }
+}
+
+.expandCampaignBar {
+  background-color: transparent;
+  border: none;
+  outline: none;
+
+  &:hover, &:active {
+    .caretDown path {
+      fill: $paper1;
+    }
+  } 
+  @media (min-width: $breakpoint-sm) {
+    display: none;
+  }
+}
+
+.caretDown {
+  width: 10px;
+  height: auto;
+}
+
+.campaignLink {
+  font-family: $font-sans;
+  font-size: $button-font-size;
+  font-weight: 600;
+  color: $paper0;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: $unit;
+
+  &:hover, &:active {
+    color: $paper1;
+  }
+}

@@ -1,9 +1,9 @@
 import LoadingPage from "@/app/_components/LoadingPage";
 import { getCampaign } from "@/app/_data/campaigns-dto";
 import { getSession } from "@auth0/nextjs-auth0";
-import { Button } from "react-bootstrap";
 import EditCampaign from "./EditCampaign";
 import ViewCampaign from "./ViewCampaign";
+import PageLayout from "@/app/_components/PageLayout";
 
 async function CampaignPage({
   params,
@@ -15,10 +15,14 @@ async function CampaignPage({
   if (!campaign) return <LoadingPage />;
   const userPk = campaign.pk.split("/")[0];
 
-  return !session || userPk === session.user.userPK ? (
-    <EditCampaign campaign={campaign} />
-  ) : (
-    <ViewCampaign campaign={campaign} />
+  return (
+    <PageLayout campaign={campaign}>
+      {session && userPk === session.user.userPK ? (
+        <EditCampaign campaign={campaign} />
+      ) : (
+        <ViewCampaign campaign={campaign} />
+      )}
+    </PageLayout>
   );
 }
 

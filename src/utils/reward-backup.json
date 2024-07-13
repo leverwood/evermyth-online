@@ -1,0 +1,2143 @@
+[
+  {
+    "name": "10-Foot Pole",
+    "id": "36fab88d-f49e-4abf-9e98-5ce32283ba9a",
+    "type": "equipment",
+    "price": 1,
+    "shopCategories": ["delving-supplies", "woodworker"],
+    "instructions": ""
+  },
+  {
+    "name": "Abacus",
+    "type": "trinket",
+    "id": "b8bb4cce-b67f-40bd-ae1c-f1d3f629135f",
+    "price": 2,
+    "shopCategories": ["bookstore", "arcane-shop"]
+  },
+  {
+    "name": "Aetherplume",
+    "consumable": true,
+    "grantsAbilities": ["slow fall"],
+    "aoe": true,
+    "instructions": "Throw this in the air and up to 4 creatures of your choice fall slowly for 1 minute. Single use.",
+    "id": "a1a8a904-9b4a-4f8b-a944-c5f0975fef5f",
+    "type": "equipment",
+    "shopCategories": ["arcane-shop"],
+    "price": 30
+  },
+  {
+    "name": "Alchemist's Supplies",
+    "type": "equipment",
+    "instructions": "It's up to you to harvest materials you think have alchemical properties. The materials are consumed on success or failure.\n\n***Learning Formulas (T0).*** You can either choose to create a formula you already know, or experiment with learning a new one. Make a medium difficulty check. On a success, you learn and brew a new formula.\n\n***Craft potion or poison (T0).*** Takes 1 hour. If trained, no check is required.",
+    "multiRewards": [],
+    "id": "e2708683-46b2-4b6c-b09d-8e2920bce44a",
+    "price": 50,
+    "shopCategories": ["alchemist"],
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/Cattegy_Chemistry_set_lab_equipment_like_beakers_test_tubes_and_6854b5f2-4410-416f-8601-506c24870a74.png",
+    "stretchImgY": true
+  },
+  {
+    "name": "Blood Hunter",
+    "type": "training",
+    "instructions": "You practice the forbidden art of hemocraft to cast blood curses. Your ability for this is AGI.\n\n***Pushing the limit.*** If you are out of wellspring, you can attempt to cast again. Make a check, DC + the feature's tier. On a failure, instantly drop to 0 AGI pool.",
+    "id": "474b43f3-a547-4576-8999-5e3e4d63e89f",
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/Hemocraft%20blood%20magic.png",
+    "stretchImgY": true
+  },
+  {
+    "id": "c45fa22b-8b22-4af9-a11d-2c8c58ad8792",
+    "name": "Chocolate",
+    "consumable": true,
+    "heals": 2,
+    "instructions": "single use, no check, restore 2 to mental pool",
+    "noCheck": true,
+    "specificMsg": "restores mental pool",
+    "specific": true,
+    "type": "equipment",
+    "shopCategories": ["tavern", "apothecary"],
+    "price": 25
+  },
+  {
+    "id": "7bd70c18-3bec-4b7c-bf8c-266fa23117b7",
+    "name": "Con Artist's Pack",
+    "instructions": "Contains a hooded lantern, tinderbox, crowbar, climbing kit, and 50 ft of rope",
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/Cattegy_a_knolling_flatlay_of_a_thiefs_kit_which_includes_a_bac_6ca38dfa-69e0-4f5b-a13e-10850cf8f43f.png"
+  },
+  {
+    "name": "Cult Leader",
+    "stunned": false,
+    "specific": false,
+    "consumable": false,
+    "restrained": false,
+    "disadvantage": false,
+    "advantage": false,
+    "aoe": false,
+    "relentless": false,
+    "specificMsg": "",
+    "maxWellspring": 2,
+    "type": "feature",
+    "instructions": "Convince a person to make a pact with your patron and increase your max wellspring by 1",
+    "heals": 0,
+    "id": "a3139d71-e1bd-45bb-9320-b2cafb39e461",
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/Cattegy_a_dark-skinned_cult_leader_of_an_earth_god_talking_to_s_9bc332ce-d559-460f-9552-b66dc4390784.png",
+    "stretchImgY": true
+  },
+  {
+    "id": "892353a9-da0a-4be2-93c5-8b9c1a9378f9",
+    "name": "Dagger",
+    "type": "equipment",
+    "deals": 1,
+    "shopCategories": ["blacksmith"],
+    "price": 10,
+    "ranged": false
+  },
+  {
+    "id": "8a09f15d-571f-4e46-9f4b-1896c342ff95",
+    "name": "Finger of the Five-Fingered Viscount"
+  },
+  {
+    "id": "c919abe2-4f51-4ab0-9821-9c1fc239a025",
+    "name": "Finger of the Viscount",
+    "type": "equipment",
+    "consumable": true,
+    "noCheck": true,
+    "grantsAbilities": [
+      "duplicates one item but not any of its magical properties"
+    ]
+  },
+  {
+    "name": "Flame Blade",
+    "type": "feature",
+    "instructions": "TODO: Lingering damage",
+    "deals": 1,
+    "restrained": false,
+    "id": "411ee852-d025-432d-8ef2-9bb907690403",
+    "multiRewards": []
+  },
+  {
+    "id": "cd16e1c8-55e7-401e-ba43-b094e1f93ca2",
+    "name": "Healer's Kit",
+    "heals": 2,
+    "consumable": true,
+    "instructions": "",
+    "noCheck": true,
+    "specificMsg": "heal physical pools only",
+    "specific": true,
+    "type": "equipment",
+    "price": 25,
+    "shopCategories": ["temple", "survival-outfitters"]
+  },
+  {
+    "id": "fabd81e7-99b7-48cd-afd7-bfc8adf7d588",
+    "name": "Herbal Distillation",
+    "consumable": true,
+    "noCheck": true,
+    "type": "equipment",
+    "grantsAbilities": ["negates the effects of living light spell fields"]
+  },
+  {
+    "name": "Hooded Lantern",
+    "instructions": "Runs on flasks of lamp oil. Gives off light around it with a range of 1.",
+    "id": "d264204b-3686-4280-bf35-bbdcae217be4",
+    "type": "equipment",
+    "price": 12,
+    "shopCategories": ["chandlery", "delving-supplies"]
+  },
+  {
+    "id": "a9cf0549-9b1b-4e95-a453-98c6edbc5cd8",
+    "name": "I Know a Guy",
+    "grantsAbilities": ["you know a guy"],
+    "instructions": "For any given objective, you might know a someone who can help. Roll a chance roll for one of the following specialties: Pickpocket (50%), Footpad or Fence (25%), Enforcer (10%), Informant (5%), Kingpin (1%). If you want to find another type of entrepreneur in the criminal arts, the DM will set the chance target. You can only roll once per objective.",
+    "type": "feature"
+  },
+  {
+    "name": "Increase damage",
+    "deals": 1,
+    "cost": 1,
+    "id": "366f4a0a-3874-4a2d-9abe-fd6e80c50c90"
+  },
+  {
+    "name": "Increase summon tier",
+    "summonTierIncrease": 1,
+    "cost": 1,
+    "summon": false,
+    "noAction": false,
+    "noCheck": false,
+    "id": "49e20877-8af8-4ef3-804f-be85e9bc1d1d"
+  },
+  {
+    "name": "Flask of oil",
+    "type": "equipment",
+    "instructions": "lasts 6 hours in lamp or lantern",
+    "multiRewards": [
+      {
+        "name": "Minor Grenade",
+        "type": "equipment",
+        "deals": 1,
+        "aoe": true,
+        "consumable": true
+      }
+    ],
+    "id": "f90f7f40-3eb9-42ad-b063-d6b492e94216",
+    "price": 5,
+    "shopCategories": ["alchemist", "chandlery", "delving-supplies"],
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/Cattegy_A_flask_of_amber-colored_oil._Classical_realism_matte_w_f3ba8a96-cf08-4c84-b406-aaeec340370b.png",
+    "stretchImgY": true
+  },
+  {
+    "type": "training",
+    "name": "Marks of the Thief",
+    "grantsAbilities": [],
+    "instructions": "If you rob a building that has been marked by the local thieves guild, and then gift a valuable stolen item to that guild, you earn the thieves' marks of that city.\n\nEach guild will tattoo you with two marks, each of which provides a feature.",
+    "id": "2bcbc12b-c05b-4775-83d5-6f11dc326c8f",
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/Cattegy_A_goblin_tattoo_artist_is_working_on_someone._epic_fant_aaa010d6-b5e8-4b28-840f-489488ce159e.png",
+    "stretchImgY": true
+  },
+  {
+    "name": "Minor Grenade",
+    "type": "equipment",
+    "deals": 1,
+    "aoe": true,
+    "consumable": true,
+    "id": "70f275a4-f4ce-47e0-8ee1-37a5262d972c"
+  },
+  {
+    "name": "Needle of Mending",
+    "type": "equipment",
+    "grantsAbilities": ["repair things"],
+    "instructions": "With this needle, you can repair a single break or tear in an object, as long as the break or tear is no larger than 1 foot in any dimension. It leaves no trace of the former damage.",
+    "id": "fd717b79-aab6-42fe-8f0c-a13568fa7cec",
+    "shopCategories": ["clothier"],
+    "price": 15,
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/card-needle-2.jpg",
+    "stretchImgY": true
+  },
+  {
+    "name": "Orb of Depths Direction",
+    "instructions": "This item can orient you while traveling underground.",
+    "id": "e4cfbe51-0345-45f6-9f0d-f7e95aacebd8",
+    "type": "equipment",
+    "shopCategories": ["delving-supplies"],
+    "price": 100
+  },
+  {
+    "id": "9aa75bc1-f25c-4e9f-9a55-8e0914f4765a",
+    "name": "Pilfer's Doorway",
+    "consumable": true,
+    "noCheck": true,
+    "grantsAbilities": [
+      "When inserted into any door’s lock, the door opens and becomes a portal to the Feywild"
+    ]
+  },
+  {
+    "name": "Rabbit Hop",
+    "noChase": true,
+    "type": "feature",
+    "id": "99ca1ab2-fc24-439d-96c8-1e564568697f"
+  },
+  {
+    "id": "9a3fefd6-4026-4e90-8ece-a8b86c806a6f",
+    "name": "Songwriter",
+    "type": "feature",
+    "instructions": "Take 1 hour to write a song about a recent adventure. Select an effect from a list the DM provides. You must give the song a name."
+  },
+  {
+    "id": "ebda8c4a-87b9-42c1-9d21-97e9239a1da4",
+    "name": "Splatterbeast Paint",
+    "consumable": true,
+    "noCheck": false,
+    "grantsAbilities": [],
+    "summon": true,
+    "instructions": "Paints a splatterbeast (tier 0) into existence, single use",
+    "notes": ""
+  },
+  {
+    "name": "Torch",
+    "instructions": "Lasts 1 hour. Each torch takes 1 gear slot.",
+    "id": "305996a5-7318-4314-8d56-05a255578b5f",
+    "type": "equipment",
+    "shopCategories": ["chandlery", "delving-supplies"],
+    "price": 1
+  },
+  {
+    "name": "Warlock of Glomtili",
+    "type": "training",
+    "instructions": "You draw magic from Glomtili, the god of earth. They dream of your experiences, and power flows through you. You use your Social score for Glomtili powers.\n\n***Pushing the limit.*** If you are out of wellspring, you can attempt to cast again. Make a check with a target of 10 + the feature's level. On a failure, instantly drop to 0 Social pool.\n\n***Waking the kaiju.*** Displeasing Glomtili disturbs their slumber, and blocks your ability to cast spells until they are calmed.",
+    "id": "04869ebe-859f-408f-a4cf-abd96d1a5644",
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/Cattegy_the_head_of_a_legendary_behemoth_kaiju_made_of_rock_and_77b8b8ba-aabe-48e4-9d46-0aa0eec4a25a.png",
+    "stretchImgY": true
+  },
+  {
+    "name": "Warlock of Vortun",
+    "type": "training",
+    "instructions": "You draw magic from Vortun, the god of fire. He dreams of your experiences, and power flows through you. You use your Social score for Glomtili powers.\n\n***Pushing the limit.*** If you are out of wellspring, you can attempt to cast again. Make a check with a target of 10 + the feature's level. On a failure, instantly drop to 0 Social pool.\n\n***Waking the dragon.*** Displeasing Vortun disturbs his slumber, and blocks your ability to cast spells until he is calmed.",
+    "id": "a2fee5d0-2e3c-481d-b106-d5681d482c42",
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/Vortun.png",
+    "stretchImgY": true
+  },
+  {
+    "name": "Antitoxin",
+    "type": "equipment",
+    "advantage": true,
+    "advantageMsg": "advantage to resist poison",
+    "consumable": true,
+    "noCheck": true,
+    "multiRewards": [],
+    "instructions": "",
+    "duration": 1,
+    "durationMsg": "8 hours",
+    "id": "fdedab7a-4c49-4608-9cb0-6cb713ff104e",
+    "price": 50,
+    "shopCategories": ["alchemist"]
+  },
+  {
+    "name": "Basic Poison",
+    "multiRewards": [
+      {
+        "name": "Coat weapon",
+        "consumable": true,
+        "noCheck": true,
+        "deals": 2
+      },
+      { "name": "Ingested", "consumable": true, "deals": 4 }
+    ],
+    "type": "equipment",
+    "instructions": "",
+    "id": "c0ad94bc-0184-4de2-b0c5-129d462a09ae",
+    "price": 100,
+    "shopCategories": ["alchemist"]
+  },
+  {
+    "name": "Blind Fire Mark",
+    "type": "feature",
+    "ranged": true,
+    "disadvantageMsg": "close your eyes and fire with disadvantage",
+    "disadvantage": true,
+    "deals": 3,
+    "id": "dfa510a9-ba65-4c8e-a1bc-68b7faaa58d3"
+  },
+  {
+    "type": "feature",
+    "name": "Bloodied Resurgence",
+    "cost": 2,
+    "relentlessMsg": "a physical pool",
+    "relentless": true,
+    "recoverWellspring": 0,
+    "noCheck": true,
+    "id": "713ddab0-880f-4b38-9616-b0556bf5d3b9",
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/Cattegy_a_heavily_wounded_minotaur_hero_is_getting_up_off_the_g_c4ef0e25-8768-4e69-9552-a93b3c853d7f.png",
+    "stretchImgY": true
+  },
+  {
+    "name": "Burning Hands",
+    "aoe": true,
+    "deals": 1,
+    "cost": 1,
+    "upcast": { "name": "Increase damage", "deals": 1, "cost": 1 },
+    "id": "b6c28290-8b94-4f24-8271-0d028b45d2cb",
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/burning%20hands.jpg"
+  },
+  {
+    "id": "553819de-543b-4d27-8a66-f49d706d7553",
+    "name": "Charm Person",
+    "type": "feature",
+    "instructions": "Charm a creature who speaks your language. On a success, they regard you as a friendly acquaintance and you have advantage on social rolls with them. Ten minutes after the casting of the spell, they realize they were charmed and you have disadvantage. Costs 1 wellspring.",
+    "cost": 1,
+    "advantage": true,
+    "disadvantage": false,
+    "grantsAbilities": ["regard you as a friendly acquaintance "],
+    "trained": true,
+    "trainedMsg": "social rolls",
+    "specific": true,
+    "specificMsg": "while you're talking to them",
+    "advantageMsg": "social rolls"
+  },
+  {
+    "name": "Coat weapon",
+    "consumable": true,
+    "noCheck": true,
+    "deals": 2,
+    "id": "8bff3677-13e7-4b68-af0b-338e888755bb"
+  },
+  {
+    "name": "Crimson Chains",
+    "restrained": true,
+    "type": "feature",
+    "advantage": true,
+    "advantageMsg": "all creatures have advantage to act against it while it is restrained",
+    "id": "a06b2fd0-c142-463a-b0b0-d5fbc9da2762",
+    "instructions": "",
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/blood%20curse%20of%20binding.png"
+  },
+  {
+    "id": "02863eba-5d32-4916-b509-1f180d1f5de7",
+    "name": "Enlarge / Reduce",
+    "advantage": true,
+    "advantageMsg": "cause a creature to become  twice or half as big for one hour. They have advantage on actions when their new size is helpful",
+    "cost": 1,
+    "noCheck": true,
+    "type": "feature"
+  },
+  {
+    "name": "Formula: Antitoxin",
+    "type": "feature",
+    "advantage": true,
+    "advantageMsg": "advantage to resist poison",
+    "consumable": true,
+    "noCheck": true,
+    "durationMsg": "8 hours",
+    "duration": 1,
+    "id": "60131c34-9055-43e9-9144-3ada70768966"
+  },
+  {
+    "name": "Formula: Basic Poison",
+    "multiRewards": [
+      {
+        "name": "Poison Coating",
+        "deals": 2,
+        "consumable": true,
+        "noCheck": true
+      },
+      {
+        "name": "Ingested Poison",
+        "consumable": true,
+        "deals": 4,
+        "instructions": ""
+      }
+    ],
+    "type": "feature",
+    "id": "82e9abd6-cb4f-4a81-94e4-a2a1de964599"
+  },
+  {
+    "name": "Golem Familiar",
+    "type": "feature",
+    "summon": true,
+    "summonTierIncrease": 0,
+    "instructions": "",
+    "notes": "summon a tier 0 tiny golem\n\nYour patron lends one of their tiny minions to follow your commands and keep an eye on you. When their pool hits zero, they disappear back to your patron. It takes an hour to summon them again with an elaborate ritual. Work the DM to make them.",
+    "cost": 1,
+    "upcast": {
+      "name": "Increase summon tier",
+      "summonTierIncrease": 1,
+      "cost": 1,
+      "summon": false,
+      "noAction": false,
+      "noCheck": false
+    },
+    "restrained": false,
+    "disadvantage": false,
+    "aoe": false,
+    "noAction": false,
+    "id": "2c8b70c8-1986-47db-a009-2f064c684c43",
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/Cattegy_very_small_tiny_creature_made_of_rock_is_smiling._epic__fafee021-cbcf-494e-95d3-124d0522b286.png",
+    "stretchImgY": true
+  },
+  {
+    "name": "Grafted Cleaver",
+    "deals": 2,
+    "type": "equipment",
+    "id": "08d25dfe-e443-46e3-84d2-444affc9baec",
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/cleaver.png",
+    "stretchImgY": true
+  },
+  {
+    "name": "Hare Trigger",
+    "type": "feature",
+    "grantsAbilities": ["", ""],
+    "instructions": "If the enemy side goes before you in bullet time, you can roll an Agile check to take your turn before them. The target number based on the highest tier enemy.",
+    "id": "64607805-8b4c-4034-a0f7-c4b57380e190",
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/Cattegy_an_alert_and_scared_rabbit_looks_over_its_shoulder._it__558f67f8-8149-403b-80e9-5418e2e7c967.png",
+    "stretchImgY": true
+  },
+  {
+    "name": "Hellish Rebuke",
+    "noCheck": false,
+    "deals": 2,
+    "cost": 1,
+    "instructions": "while defending, deal 2 points, costs 1 wellspring\n\nYou point your finger, and the creature that damaged you is momentarily surrounded by the flames of Vortun.",
+    "notes": "",
+    "whileDefending": true,
+    "id": "555009c6-064b-4ef0-969c-c951976b9f64",
+    "type": "feature",
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/Hellish_Rebuke%20-%20Copy.jpg",
+    "stretchImgY": true
+  },
+  {
+    "name": "Ingested",
+    "consumable": true,
+    "deals": 4,
+    "id": "26a95e46-1937-4fe3-98c6-5151fa9843c4"
+  },
+  {
+    "id": "e734b73c-6bb9-437a-94dc-e2c699b6363d",
+    "name": "Inspiring Song",
+    "advantage": true,
+    "advantageMsg": "",
+    "instructions": "Grant a creature 3 inspiration. Each can be used whenever they choose to gain advantage on a  roll. A creature may only have 3 inspiration at a time and they expire on a full reset. Costs 1 wellspring. JULIAN: This needs a name",
+    "cost": 1,
+    "grantsAbilities": ["", ""],
+    "type": "feature"
+  },
+  {
+    "name": "Leather Armor",
+    "reduceDamage": 2,
+    "noCheck": false,
+    "cost": 1,
+    "id": "9698cf54-63ef-4a7c-bf7e-780c6ea9695f",
+    "type": "equipment",
+    "price": 20,
+    "shopCategories": ["leatherworker"]
+  },
+  {
+    "id": "f97ae5c4-dc5a-4ec9-8950-4b4c023c1f4d",
+    "name": "Living Light Tuning Fork",
+    "noCheck": true,
+    "grantsAbilities": ["hums in the presence of living light magic"],
+    "specific": true,
+    "consumable": false
+  },
+  {
+    "id": "70e76666-503c-419e-ab71-8c9727aa4b00",
+    "name": "Mirrogold",
+    "wellspringMax": 3,
+    "specificMsg": "if you haven't upset Mirrogold in the past 7 days",
+    "specific": true,
+    "instructions": "Sentient pocket mirror. If you haven't upset Mirrogold in the past 7 days, increase max wellspring by 3."
+  },
+  {
+    "name": "Mystic Pebble",
+    "consumable": false,
+    "deals": 2,
+    "instructions": "deals 2 points, ranged when used with a sling",
+    "ranged": true,
+    "castTime": 0,
+    "id": "5d54057f-d772-416b-b77e-fe35aa2e4315"
+  },
+  {
+    "name": "Mystic Pebbles",
+    "multiRewards": [
+      {
+        "name": "Mystic Pebble",
+        "consumable": false,
+        "deals": 2,
+        "instructions": "deals 2 points, ranged when used with a sling",
+        "ranged": true,
+        "castTime": 0
+      }
+    ],
+    "type": "feature",
+    "instructions": "You imbue 5 pebbles with magic. After a full reset, they become ordinary pebbles again.",
+    "id": "fa5034aa-2f7b-44c2-8411-95137ff5036c",
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/Cattegy_a_human_made_of_rock_leans_down_and_casts_a_spell_on_so_2d432ff3-5432-4777-8303-447f2d380fbe.png",
+    "stretchImgY": true
+  },
+  {
+    "name": "No-Stones",
+    "cost": 1,
+    "aoe": true,
+    "grantsAbilities": ["can see through walls"],
+    "instructions": "see through walls, costs 1 wellspring\n\nYou can use an action to speak the command word, \"unturned\" and turn it over so the flat side is pressed against a natural surface. When you do, the geode is fixed in place and projects a map above it, showing the layout of the area around it with a range of 3. It shows all walls, floors, and surfaces made of stone, natural metal, or earth.\n\nTo remove the geode, speak the command word again.",
+    "id": "2513dece-5669-4c40-b5a2-818b522f178c",
+    "type": "equipment",
+    "shopCategories": ["delving-supplies"],
+    "price": 200,
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/No-Stones_Transparent_Background.png"
+  },
+  {
+    "id": "ffef228b-45ec-4083-bc41-724eef7a6577",
+    "name": "Ocean's Drone",
+    "aoe": true,
+    "noCheck": false,
+    "deals": 1,
+    "castTime": 1,
+    "castTimeMsg": "spend 2 turns playing",
+    "instructions": "spend 2 turns playing this hurdy gurdy and deal 1 point to all creatures in a zone on the second turn",
+    "type": "equipment",
+    "shopCategories": ["entertainment"],
+    "price": 40
+  },
+  {
+    "id": "c1cdf5e5-8421-4b81-b8dd-89ba46724633",
+    "name": "Pallo Aldo Sauce",
+    "notes": "",
+    "instructions": "***Sample it.*** Try it to find out what this does.\n\n***Chug the entire bottle.*** Gain a short-term madness effect but have permanent resistance to fire damage. Action, 1 use, consumable.",
+    "advantage": true,
+    "durationMsg": "forever",
+    "duration": 1,
+    "advantageMsg": "actually resistance, I need to set this up"
+  },
+  {
+    "id": "7b38f7ad-a049-45b1-b563-fda24fba3362",
+    "name": "Rosewood",
+    "type": "equipment",
+    "restrained": true,
+    "deals": 1
+  },
+  {
+    "id": "08dd2c31-783a-4a16-aef9-7053fd27d8b6",
+    "trained": true,
+    "trainedMsg": "Training in persuasion and deception of Seelie fey",
+    "name": "Seelie Ambassador",
+    "type": "feature",
+    "instructions": "",
+    "grantsAbilities": [],
+    "notes": "TODO: Add multiple training"
+  },
+  {
+    "id": "c7204946-5a78-48ec-a5f8-87c6abd44bc3",
+    "name": "Serving of Smarmalade",
+    "trainedMsg": "Grants training in persuading and deceiving for 1 hour. If you are already trained, you roll with advantage",
+    "trained": true,
+    "consumable": true,
+    "noCheck": true
+  },
+  {
+    "name": "Shadowstep mark",
+    "teleport": true,
+    "wellspringRecover": 0,
+    "cost": 1,
+    "noAction": false,
+    "specific": false,
+    "type": "feature",
+    "noChase": false,
+    "isMove": true,
+    "deals": 1,
+    "speed": 0,
+    "instructions": "as your move, teleport to a nearby zone, deal +1 on your next successful attack, costs 1 wellspring",
+    "id": "acc3d427-8628-4ea8-879c-2d199dd6b547"
+  },
+  {
+    "id": "15413cc9-fe35-4f20-9c50-b1e3e81d7c1d",
+    "name": "Silence",
+    "grantsAbilities": ["create a sphere of silence in 1 zone"],
+    "duration": 2,
+    "durationMsg": "lasts until your next full reset or you dismiss it",
+    "cost": 1,
+    "type": "feature"
+  },
+  {
+    "id": "53832f00-7a99-49bb-8186-99c6a7f9ec45",
+    "name": "Slumber Song",
+    "type": "feature",
+    "stunned": true,
+    "cost": 1,
+    "instructions": "Put a creature to sleep. It cannot act or move. Make a check to maintain the effect if a creature attempts to help them. Costs 1 wellspring. JULIAN: This needs a name"
+  },
+  {
+    "name": "Sneak Attack",
+    "noAction": false,
+    "deals": 4,
+    "cost": 1,
+    "specificMsg": "when attacking from hiding",
+    "specific": true,
+    "id": "01e9c60e-7ab7-48ea-b988-bb600e78ff41"
+  },
+  {
+    "name": "Speaking Stone Carver",
+    "instructions": "You can take an hour to carve a pair of speaking stones. All speaking stones are trinkets for you, but equipment for others.",
+    "multiRewards": [
+      {
+        "name": "Speaking Stones",
+        "instructions": "Stones come in matching pairs, and are carved so they are easily distinguished. While you touch a stone, you can speak into it. The sound of your voice emits from the paired stone.",
+        "duration": 0,
+        "noCheck": true
+      }
+    ],
+    "type": "feature",
+    "id": "477449df-e2b7-4147-ae34-0c3308571cff",
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/Sending_stones-5e.webp",
+    "padImage": true
+  },
+  {
+    "name": "Speaking Stones",
+    "instructions": "Stones come in matching pairs, and are carved so they are easily distinguished. While you touch a stone, you can speak into it. The sound of your voice emits from the paired stone.",
+    "duration": 0,
+    "noCheck": true,
+    "id": "efedf6f1-71c4-4123-b9f4-5edafd4a347a",
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/Sending_stones-5e.webp",
+    "type": "equipment",
+    "shopCategories": ["arcane-shop"],
+    "price": 200
+  },
+  {
+    "name": "Stone Step",
+    "cost": 1,
+    "speed": 1,
+    "type": "feature",
+    "noChase": false,
+    "instructions": "",
+    "teleport": true,
+    "noCheck": false,
+    "notes": "teleport up to 2 zones away, costs 1 wellspring",
+    "noAction": false,
+    "isMove": true,
+    "aoe": false,
+    "id": "86aad1be-3ccf-430e-8edc-6b81e01d4026"
+  },
+  {
+    "name": "Tide Caller's Veil",
+    "grantsAbilities": ["breathe underwater"],
+    "speed": 1,
+    "instructions": "breathe underwater, swim speed of 1",
+    "id": "5117555f-b44e-4e2e-9ac1-bed37df99af1"
+  },
+  {
+    "id": "8b7ec689-e971-4061-bf78-33affa9fbc34",
+    "name": "Trick Pony",
+    "summon": true,
+    "cost": 1,
+    "instructions": "Pantomime riding a horse, complete with self-made horse noises and a name for the mighty beast, and you will summon a steed (tier 0) for 24 hours. Costs 1 wellspring",
+    "notes": ""
+  },
+  {
+    "name": "Twin Shortswords",
+    "deals": 2,
+    "instructions": "With their swift and nimble design, you can execute dual attacks simultaneously, dealing 2 points",
+    "id": "cff2be3c-61b5-4880-9901-c2aa0f1f3583",
+    "type": "equipment",
+    "price": 30,
+    "shopCategories": ["blacksmith"],
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/Cattegy_two_simple_steel_swords_with_short_blades._The_swords_a_a489d56a-46d3-4f03-a457-f875d3408249.png",
+    "stretchImgY": true
+  },
+  {
+    "name": "Wall of Fire",
+    "restrained": false,
+    "deals": 2,
+    "cost": 1,
+    "aoe": true,
+    "specificMsg": "if they move through the wall of fire",
+    "specific": true,
+    "type": "feature",
+    "id": "4b0fddf2-444c-461d-a18c-0d92408a4177",
+    "instructions": "surround a zone with a wall of fire. If they move through the wall of fire, deal 2 points, costs 1 wellspring"
+  },
+  {
+    "id": "94fbd8a6-e86c-4dbd-883b-b10128540560",
+    "name": "Lobster Arms",
+    "type": "equipment",
+    "deals": 1,
+    "trained": true,
+    "trainedMsg": "trained in Claw Crushin', takes 0 gear slots"
+  },
+  {
+    "name": "Magic Sword",
+    "deals": 3,
+    "cost": 3,
+    "stunned": true,
+    "id": "5a3608dd-dd02-4b77-83ae-c6652573486b"
+  },
+  {
+    "type": "equipment",
+    "name": "Spidersilk Gloves",
+    "deals": 0,
+    "advantageMsg": "and have advantage",
+    "advantage": true,
+    "trainedMsg": "you are trained",
+    "trained": true,
+    "instructions": "These gloves are invisible when worn. While wearing them, you roll with training and advantage when picking locks, picking pockets, or performing other acts of manipulating small objects for the purpose of stealing.",
+    "id": "9e97a31d-085e-41ad-a1c5-29af3c9b3c19",
+    "price": 150,
+    "shopCategories": ["shady-dealer"],
+    "specific": true,
+    "specificMsg": "when picking locks and picking pockets",
+    "notes": "I'm making this specific because I think the training is too punishing on this one",
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/Gloves_of_Thievery.png",
+    "padImage": true
+  },
+  {
+    "name": "Acid (vial)",
+    "type": "equipment",
+    "id": "3e36822e-a5a8-4c2e-97db-7f358a791aff",
+    "price": 25,
+    "consumable": true,
+    "deals": 1,
+    "aoe": true,
+    "notes": "",
+    "shopCategories": ["alchemist"]
+  },
+  {
+    "name": "Bundle of Arrows",
+    "type": "equipment",
+    "id": "369999a2-d9fa-4ae8-b232-cec9d70c0d7c",
+    "price": 5,
+    "shopCategories": ["bowyer"],
+    "instructions": "If you roll a 1 and fail, the bundle is expended."
+  },
+  {
+    "name": "Blowgun Needles",
+    "type": "equipment",
+    "id": "bf39296f-8362-4b0c-9e05-ed35406edec9",
+    "price": 1
+  },
+  {
+    "name": "Crossbow Bolts Bundle",
+    "type": "equipment",
+    "id": "3c081c36-198a-4924-ace1-1c92f76bf5ef",
+    "price": 5,
+    "instructions": "When you roll a 1 on your skill die and fail, the bundle has run out of bolts.",
+    "shopCategories": ["bowyer"]
+  },
+  {
+    "name": "Sling Bullets",
+    "type": "equipment",
+    "id": "40efcaf6-678f-43cb-b552-0b9b862b8241",
+    "price": 1,
+    "shopCategories": ["woodworker"]
+  },
+  {
+    "name": "Padded Armor",
+    "type": "equipment",
+    "id": "9af8f4df-ab18-4397-b569-d89df1fc8d17",
+    "price": 10,
+    "trained": true,
+    "trainedMsg": "trained in defense rolls",
+    "disadvantage": true,
+    "disadvantageMsg": "disadvantage to stealth",
+    "shopCategories": ["clothier"],
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/Western-Armor_0011_padded.png",
+    "padImage": true
+  },
+  {
+    "name": "Ring Mail",
+    "type": "equipment",
+    "id": "c4ce109a-bd1e-42eb-af3b-bc2db92c235e",
+    "price": 1000,
+    "disadvantageMsg": "disadvantage to stealth",
+    "disadvantage": true,
+    "cost": 1,
+    "reduceDamage": 5,
+    "shopCategories": ["blacksmith"],
+    "trainedMsg": "trained in defense",
+    "trained": false
+  },
+  {
+    "name": "Shield",
+    "type": "equipment",
+    "id": "2e3ce7ec-680f-4514-9701-78b7cc9c10fb",
+    "price": 5,
+    "shopCategories": ["woodworker", "blacksmith"],
+    "reduceDamage": 2,
+    "cost": 1
+  },
+  {
+    "name": "Buckler",
+    "type": "equipment",
+    "id": "8c45362d-61ac-4f25-bed5-32d5f2dfacb1",
+    "price": 150
+  },
+  {
+    "name": "Helmet",
+    "type": "equipment",
+    "id": "4a8e5f26-8f37-41cb-a75a-8d54a6f68f6e",
+    "price": 30,
+    "trained": true,
+    "trainedMsg": "gain training in defense",
+    "shopCategories": ["blacksmith"]
+  },
+  {
+    "name": "Chain Mail",
+    "type": "equipment",
+    "id": "daba37e4-bd78-46b5-92f9-2096c3f2749e",
+    "price": 300,
+    "trained": true,
+    "cost": 1,
+    "disadvantageMsg": "disadvantage stealth",
+    "disadvantage": true,
+    "reduceDamage": 3,
+    "trainedMsg": "trained in defense",
+    "shopCategories": ["blacksmith"]
+  },
+  {
+    "name": "Scale Mail",
+    "type": "equipment",
+    "id": "ca9dccfd-7c33-441c-9d11-986173bc6382",
+    "price": 25,
+    "reduceDamage": 3,
+    "disadvantage": true,
+    "disadvantageMsg": "disadvantage to stealth",
+    "cost": 1,
+    "shopCategories": ["blacksmith"]
+  },
+  {
+    "name": "Studded Leather Armor",
+    "type": "equipment",
+    "id": "ed676823-470c-4d19-9543-11474f0fe8d7",
+    "price": 40,
+    "shopCategories": ["leatherworker", "blacksmith"],
+    "cost": 1,
+    "trained": true,
+    "trainedMsg": "trained in defense",
+    "reduceDamage": 1
+  },
+  {
+    "name": "Breastplate",
+    "type": "equipment",
+    "id": "b94a473f-2a91-4e93-8d8f-966dce13c7b1",
+    "price": 500,
+    "shopCategories": ["blacksmith"],
+    "reduceDamage": 4,
+    "cost": 1
+  },
+  {
+    "name": "Half-Plate Armor",
+    "type": "equipment",
+    "id": "76313328-3ee8-459f-a5e1-576be54bb7eb",
+    "price": 5000,
+    "disadvantageMsg": "disadvantage to stealth",
+    "disadvantage": true,
+    "cost": 1,
+    "reduceDamage": 6,
+    "shopCategories": ["blacksmith"]
+  },
+  {
+    "name": "Plate Armor",
+    "type": "equipment",
+    "id": "51a62e08-714a-4ba0-b3e6-c07367915c2b",
+    "price": 5000,
+    "disadvantageMsg": "disadvantage to stealth",
+    "disadvantage": true,
+    "cost": 1,
+    "reduceDamage": 6,
+    "shopCategories": ["blacksmith"]
+  },
+  {
+    "name": "Splint Armor",
+    "type": "equipment",
+    "id": "f58e1855-d57a-4fbb-b115-bfaaa5c7774f",
+    "price": 240,
+    "shopCategories": ["blacksmith"],
+    "disadvantageMsg": "disadvantage to stealth",
+    "disadvantage": true,
+    "cost": 1,
+    "reduceDamage": 4
+  },
+  {
+    "name": "Alchemist's Fire",
+    "type": "equipment",
+    "id": "920d35d8-bb1c-40c3-b584-f084e59212a8",
+    "price": 50,
+    "shopCategories": ["alchemist"],
+    "notes": "Ignites when thrown and shattered, Ranged, deal 1d4. Can take 1 action to put out, otherwise takes 1d4 on the end of their turn.\n",
+    "ranged": false,
+    "deals": 2,
+    "lingeringDamage": 1,
+    "consumable": true,
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/Alch_fire.JPG.webp",
+    "padImage": true
+  },
+  {
+    "name": "Candy Xorn",
+    "type": "equipment",
+    "id": "9b63fe6c-adf3-4bf2-ad10-d024602728bd",
+    "price": 5,
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/Candy-Xorn_No_Label.png",
+    "stretchImgY": false,
+    "instructions": "Eating one causes your eyes to turn yellow and your pupils to match  the candy. You can see in darkness with a range of 2 for 1 minute. \n\nEach piece of candy xorn has a chance to not be candy at all, but actually a gemstone covered in the sugared coating. Roll d20, and on a 20 it is a gem. It can be either eye agate (40%, 10c), tiger's eye (40%, 10c), or amber (20%, 100c).",
+    "shopCategories": ["tavern"],
+    "grantsAbilities": ["darkvision"]
+  },
+  {
+    "name": "Holy Water",
+    "type": "equipment",
+    "id": "2a94279d-2076-4266-9898-0e2d8a5c03ba",
+    "price": 25,
+    "shopCategories": ["temple"],
+    "specific": true,
+    "specificMsg": "only deals damage to unholy things",
+    "deals": 2,
+    "ranged": false,
+    "consumable": true,
+    "aoe": true
+  },
+  {
+    "name": "Perfume",
+    "type": "equipment",
+    "id": "ed15d148-eb52-4f27-a6bc-376eae2627cd",
+    "price": 5
+  },
+  {
+    "name": "Rations",
+    "type": "equipment",
+    "id": "a0b7c80a-c8ab-4043-9661-d06d6bdb63c3",
+    "price": 1,
+    "shopCategories": ["survival-outfitters", "tavern"],
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/leverwood_fantasy_illustration_of_trail_rations_like_jerky_nuts_ade30f62-2c8e-4b00-bb4e-55d8ab7106a7.png",
+    "padImage": true
+  },
+  {
+    "name": "Potion of Healing",
+    "type": "equipment",
+    "id": "779ffb03-3c5f-4c20-b82d-931b1687f423",
+    "price": 50,
+    "shopCategories": ["alchemist", "apothecary", "temple"],
+    "consumable": true,
+    "noCheck": true,
+    "heals": 2
+  },
+  {
+    "name": "Recipe: Soothing Tea",
+    "type": "equipment",
+    "id": "f9d804ab-23cf-40b8-a572-9303eab4f856",
+    "price": 50,
+    "heals": 4,
+    "specific": true,
+    "specificMsg": "heals mental pools",
+    "consumable": true,
+    "noCheck": true,
+    "duration": 0,
+    "durationMsg": "takes 1 hour",
+    "castTime": 1,
+    "castTimeMsg": "takes 1 hour",
+    "instructions": "heals 4 points across any mental pools, single use"
+  },
+  {
+    "name": "Sling or Blowgun Ammo Pouch",
+    "type": "equipment",
+    "id": "a1bb0a69-25fc-4c87-aeec-b7a89802ef3b",
+    "price": 1,
+    "instructions": "If you roll a 1 when using this and fail, the ammo pouch is expended.",
+    "shopCategories": ["bowyer", "woodworker"]
+  },
+  {
+    "name": "Backpack",
+    "type": "trinket",
+    "id": "af7cb208-db00-40f4-b5b4-e31f91567932",
+    "price": 18,
+    "shopCategories": ["clothier", "general-store"]
+  },
+  {
+    "name": "Barrel",
+    "type": "equipment",
+    "id": "76787daf-8576-49fe-b14b-1233aeef1c75",
+    "price": 2,
+    "shopCategories": ["woodworker"],
+    "instructions": "holds 40 gallons"
+  },
+  {
+    "name": "Basket",
+    "type": "equipment",
+    "id": "fb8868af-0f19-4d50-939d-2397690b5ba9",
+    "price": 1
+  },
+  {
+    "name": "Bucket",
+    "type": "equipment",
+    "id": "7c6d3fc7-9351-4cba-aa36-5f7431919164",
+    "price": 1
+  },
+  {
+    "name": "Chest",
+    "type": "equipment",
+    "id": "c9078f0c-0c7a-4a37-ab76-2abe4ee160da",
+    "price": 5
+  },
+  {
+    "name": "Component Pouch",
+    "type": "equipment",
+    "id": "9845e71d-9fbe-4d97-8076-0c2d8a37aea3",
+    "price": 10
+  },
+  {
+    "name": "Crossbow Bolt Case",
+    "type": "equipment",
+    "id": "fa08c1ff-866e-49ea-8e09-d016ec522fd7",
+    "price": 1,
+    "shopCategories": ["leatherworker", "tinker", "woodworker"]
+  },
+  {
+    "name": "Forgery Kit",
+    "type": "equipment",
+    "id": "e90bd0c4-7d00-4941-aced-5d81b439a0d8",
+    "price": 15
+  },
+  {
+    "name": "Map or Scroll Case",
+    "type": "equipment",
+    "id": "d783a083-5934-44bb-8737-3c427680f2d1",
+    "price": 1,
+    "shopCategories": ["arcane-shop", "leatherworker"]
+  },
+  {
+    "name": "Pitcher",
+    "type": "equipment",
+    "id": "1b2536b3-d1d9-4dce-93d1-17bb57e01d84",
+    "price": 1
+  },
+  {
+    "name": "Sack",
+    "type": "equipment",
+    "id": "c10e9995-dab8-4519-b820-05b79b898f54",
+    "price": 1
+  },
+  {
+    "name": "Small Iron Cage",
+    "type": "equipment",
+    "id": "86b93ce0-abae-462b-ac47-47f318fd0fd8",
+    "price": 12
+  },
+  {
+    "name": "Tankard",
+    "type": "equipment",
+    "id": "f4272c83-498b-41af-b908-d3f9a81ddf9c",
+    "price": 1
+  },
+  {
+    "name": "Waterskin",
+    "type": "equipment",
+    "id": "9e2e09d4-4924-4d41-9dab-e1d044155f0d",
+    "price": 1,
+    "shopCategories": ["survival-outfitters"]
+  },
+  {
+    "name": "Barrel of Oil",
+    "type": "equipment",
+    "id": "2792b10d-418c-41f9-8dff-61c49f35b374",
+    "shopCategories": ["alchemist"],
+    "price": 100,
+    "instructions": "Requires d20 or d12 strength to lift this barrel. Must have 1 gear slot free to carry it, and can take no other actions while carrying it. Burns for 1920 hours in a lantern or lamp. When broken, covers a zone. If ignited, the flames deal 2 points to all creatures in a zone immediately and at the end of their turn as long as they are still in the zone.\n",
+    "aoe": true,
+    "lingeringDamage": 2,
+    "deals": 2,
+    "consumable": true,
+    "disadvantage": true,
+    "disadvantageMsg": "cannot take actions while carrying",
+    "specific": true,
+    "specificMsg": "requires d20 or d12 strength to lift this barrel",
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/leverwood_A_fantasy_art_style_illustration_of_a_oil_barrel_with_61ffd3ac-4db3-4d84-9041-7fedd9e8a06b.png",
+    "stretchImgY": true
+  },
+  {
+    "name": "Bedroll with Blanket",
+    "type": "equipment",
+    "id": "182f8962-d5d4-4a4f-8b71-1f4e4db7cbd3",
+    "shopCategories": ["survival-outfitters"],
+    "price": 15
+  },
+  {
+    "name": "Conqueror",
+    "type": "feature",
+    "id": "a8287021-42a0-4660-b684-2ec976631fd9",
+    "instructions": "Imbue any object or creature with fire. When an object is used as a weapon, it deals 1 extra point and ignites flammable items. When a creature ignites and takes 1 damage immediately and at the end of its turn unless the fire is put out with an action.",
+    "deals": 1,
+    "aoe": false,
+    "lingeringDamage": 1,
+    "notes": "",
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/Cattegy_a_flaming_blade._epic_fantasy_art_29a40d39-ff4f-4499-91b1-62bbff274a62.png",
+    "stretchImgY": true
+  },
+  {
+    "name": "Light Crossbow",
+    "type": "equipment",
+    "id": "76b8cf3f-9052-4065-86a4-5776166de5e6",
+    "price": 25,
+    "shopCategories": ["bowyer", "woodworker"],
+    "deals": 1,
+    "requiresAmmo": true
+  },
+  {
+    "name": "Adamantine Armor",
+    "type": "equipment",
+    "id": "4ae97258-558d-453f-b40f-a96ed18696c6",
+    "reduceDamage": 2,
+    "cost": 1,
+    "grantsAbilities": ["critical hits against you become normal hits"],
+    "shopCategories": ["blacksmith"],
+    "instructions": "Reduce damage by 1, costs 1 wellspring. Critical hits against you become normal hits.",
+    "noCheck": false
+  },
+  {
+    "name": "Amulet of Proof Against Detection and Location",
+    "type": "equipment",
+    "id": "7613f1ed-a00c-4eb5-842d-bf4c51b7be2a",
+    "grantsAbilities": [
+      "While wearing this amulet, you cannot be perceived through magical scrying sensors or be a target of other divination spells.",
+      " "
+    ]
+  },
+  {
+    "name": "Arcane Focus",
+    "type": "trinket",
+    "id": "020b56d1-9ee9-40dd-b1ca-a120a6b23d33",
+    "shopCategories": ["arcane-shop"],
+    "price": 3,
+    "instructions": "An arcane focus is a special item — an orb, a crystal, a rod, a specially constructed staff, a wand-like length of wood, or some similar item — designed to channel the power of arcane spells."
+  },
+  {
+    "name": "Ball Bearings",
+    "type": "equipment",
+    "id": "60a003bb-9a67-4f21-adb5-fd2d2f3fc16f",
+    "instructions": "single use, no roll required. Spill these tiny metal balls to cover a zone. When the first creature crosses over them, the creature falls down and takes 1 TOU damage.",
+    "aoe": false,
+    "consumable": true,
+    "noCheck": true,
+    "deals": 1,
+    "shopCategories": ["delving-supplies", "tinker"],
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/leverwood_fantasy_art_of_a_tiny_pouch_with_ball_bearings_spilli_419988d4-8621-4097-82e6-9f369e71c1ae.png",
+    "padImage": true
+  },
+  {
+    "name": "Dazzleburst Crystal",
+    "type": "equipment",
+    "id": "f79c43a2-aca8-4353-89e3-ec4074281406",
+    "instructions": "A sharp blow to the crystal causes it to burst in a flash of blinding light. All creatures in a zone are blinded for 30 seconds. On a fail, it explodes in your hand and blinds you for 1 min. Single use.",
+    "aoe": true,
+    "consumable": true,
+    "grantsAbilities": ["blind all creatures in a zone"],
+    "shopCategories": ["arcane-shop"],
+    "price": 40
+  },
+  {
+    "name": "Flaming Arrow",
+    "type": "equipment",
+    "id": "b98d8a49-2f15-473c-a259-7056859d15b4",
+    "consumable": true,
+    "deals": 2,
+    "noCheck": true,
+    "instructions": "Deals +2 damage. Single use, consumed only when it hits.",
+    "shopCategories": ["bowyer"],
+    "price": 15
+  },
+  {
+    "name": "Hunting Trap",
+    "type": "equipment",
+    "id": "a9c7b7e7-a4a5-421a-a943-3c2b8d9f4aae",
+    "restrained": true,
+    "deals": 1,
+    "price": 5,
+    "shopCategories": ["blacksmith", "tinker", "survival-outfitters"],
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/download.jpg"
+  },
+  {
+    "name": "Minor Illusion",
+    "type": "feature",
+    "id": "5fd6c173-e3a0-48b5-933b-267c84978e1e",
+    "instructions": "",
+    "grantsAbilities": ["create a sound or image no larger than yourself"],
+    "duration": 1,
+    "durationMsg": "lasts for 1 minute",
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/Cattegy_spectral_chicken_in_a_dungeon._wide_angle_fantasy_art_0c6231b1-b339-4309-b292-5eb9266d8b14.png",
+    "stretchImgY": true
+  },
+  {
+    "name": "Tallow Candle",
+    "type": "equipment",
+    "id": "494e5804-5925-420c-87ef-72113033461d",
+    "instructions": "lasts 5 hours, lights a single creature's space",
+    "shopCategories": ["chandlery", "bookstore", "general-store"],
+    "price": 2
+  },
+  {
+    "name": "This is fine",
+    "type": "training",
+    "id": "d07f9432-d651-4cf0-95d9-ae74cae68542",
+    "instructions": "Getting the killing blow with fire pleases Vortun and soothes him in his slumber. Each person you kill with flame has a chance to unlock further power from Vortun, such as a new spell or feature.",
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/05onfire1_xp-superJumbo-v2.jpg",
+    "stretchImgY": true
+  },
+  {
+    "name": "Bug Collector",
+    "type": "training",
+    "id": "e5c5145e-9539-46a7-a9e4-7c5ceceaa192",
+    "instructions": "**Find bug.** When you are in a new location, you can try to discover a new bug. Costs 1 wellspring. \n\n**Release bug.** Release a bug and make a medium-difficulty check. On success, the bug deals 4 points. On a failure, the bug was upset at being captured and you take half the points to your NTU pool. Bugs are single use, and releasing them costs 1 wellspring. Spend +1 wellspring to deal +1 point.\n",
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/Cattegy_a_knolling_flatlay_of_cool_and_colorful_bugs_and_butter_1cd00a21-a146-42b4-99dc-a870dd81a6aa.png",
+    "stretchImgY": true
+  },
+  {
+    "name": "Bug Net",
+    "type": "equipment",
+    "id": "6b0471d8-ea93-43ac-9019-36e04882c794",
+    "deals": 1,
+    "shopCategories": ["woodworker", "pet-store"]
+  },
+  {
+    "name": "Dimebag of Primalumina",
+    "type": "equipment",
+    "id": "512fe520-2bbd-4d5a-aba9-efdec876cc91",
+    "shopCategories": ["shady-dealer"],
+    "instructions": "Try it, you'll like it.",
+    "price": 20
+  },
+  {
+    "name": "Divine Sense",
+    "type": "feature",
+    "id": "774ee70a-8395-4349-9471-ab732ee772be",
+    "ranged": true,
+    "grantsAbilities": ["sense things inimical to your oath"],
+    "cost": 1,
+    "rangeIncrease": 1
+  },
+  {
+    "name": "Dungeoneer's Pack",
+    "type": "equipment",
+    "id": "b62c8e1b-cba2-4ad5-9d8e-833aebeacf36",
+    "price": 20,
+    "shopCategories": ["delving-supplies"],
+    "instructions": "Contains a climbing kit, 10 ft pole, crowbar, tinderbox, and 50 ft of rope"
+  },
+  {
+    "name": "Lay on Hands",
+    "type": "feature",
+    "id": "a10973ac-c31e-4f78-89e9-71845703fbae",
+    "heals": 3,
+    "cost": 1
+  },
+  {
+    "name": "Shell Blessing",
+    "type": "feature",
+    "id": "3f15f8b3-67c8-4545-bd82-8d3bfda37a47",
+    "advantageMsg": "grants advantage to defense to all creatures in your current zone for 10 minutes",
+    "cost": 1,
+    "advantage": true,
+    "durationMsg": "10 minutes",
+    "duration": 0,
+    "aoe": true,
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/shell%20blessing%20bless.png",
+    "stretchImgY": true
+  },
+  {
+    "name": "Natural Armor",
+    "type": "training",
+    "id": "69ad7b8f-5165-42a9-9171-0128c6c763d4",
+    "instructions": "Your body has armor naturally. You are trained in defending."
+  },
+  {
+    "name": "Sledgehammer",
+    "type": "equipment",
+    "id": "35826c4a-8577-401e-9f0d-2ae3032dbc7f",
+    "deals": 2,
+    "price": 30,
+    "shopCategories": ["blacksmith", "general-store"]
+  },
+  {
+    "name": "Withdraw into Shell",
+    "type": "feature",
+    "id": "4e67af24-af67-4e21-987a-ce62d1818346",
+    "reduceDamage": 2,
+    "cost": 1
+  },
+  {
+    "name": "Light Crystal",
+    "type": "equipment",
+    "id": "a837206b-2cac-4066-9b29-f8d24483da60",
+    "price": 20,
+    "instructions": "worth 20c"
+  },
+  {
+    "name": "Net",
+    "type": "equipment",
+    "id": "456e7363-ae2a-4a9e-8d9e-64a379e0266d",
+    "price": 6,
+    "shopCategories": ["clothier", "survival-outfitters", "dockside"]
+  },
+  {
+    "name": "Thief's Pack",
+    "type": "equipment",
+    "id": "92a10890-a4e6-4477-b3dd-03b90a8f7be0",
+    "instructions": "Contains thieves tools, a crowbar, bullseye lantern, tinderbox, climbing kit, traveler's clothes, and 50 ft of rope.",
+    "price": 20,
+    "shopCategories": ["shady-dealer"]
+  },
+  {
+    "name": "Thundercrack Pistol",
+    "type": "equipment",
+    "id": "f82b0346-799a-4244-8b48-9654730af3e3",
+    "ranged": true,
+    "stunned": true,
+    "deals": 2,
+    "cost": 2,
+    "requiresAmmo": true,
+    "price": 1000,
+    "shopCategories": ["blacksmith", "tinker"]
+  },
+  {
+    "name": "Tide Caller's Veil",
+    "type": "equipment",
+    "id": "1e707c23-eaa9-4d01-b090-c384481aeef4",
+    "instructions": "",
+    "grantsAbilities": [" breathe underwater", "swim speed of 1"],
+    "speed": 0,
+    "shopCategories": ["clothier", "dockside", "survival-outfitters"]
+  },
+  {
+    "name": "Sniper Rifle",
+    "type": "equipment",
+    "id": "5f095471-ef6f-47e4-a9bd-be1ed7698294",
+    "ranged": true,
+    "rangeIncrease": 2,
+    "deals": 1,
+    "price": 300,
+    "shopCategories": ["tinker", "blacksmith"]
+  },
+  {
+    "name": "Explorer's Pack",
+    "type": "equipment",
+    "id": "813bb1f4-2272-4888-8132-2e583e90fdd2",
+    "instructions": "Contains a tinderbox, mess kit, traveler's clothes, cold weather clothes, and 50 ft of rope",
+    "shopCategories": ["survival-outfitters"],
+    "price": 20,
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/Cattegy_a_knolling_flatlay_of_a_dark_green_backpack_bedroll_bla_86a930a8-0bcc-40a9-bc1a-0e16a753c284.png",
+    "stretchImgY": true
+  },
+  {
+    "name": "Rifle",
+    "type": "equipment",
+    "id": "d1cae208-d54e-4659-8f91-4904a48a0d27",
+    "ranged": true,
+    "rangeIncrease": 1,
+    "deals": 1,
+    "shopCategories": ["blacksmith", "tinker"],
+    "price": 200
+  },
+  {
+    "name": "Shortsword",
+    "type": "equipment",
+    "id": "45bcfa49-2f72-4876-913b-6530eda1127c",
+    "price": 15,
+    "shopCategories": ["blacksmith"],
+    "deals": 1
+  },
+  {
+    "name": "Sling",
+    "type": "equipment",
+    "id": "f6d7f3d6-5520-4b03-9bc0-f6446f04a64d",
+    "price": 1,
+    "shopCategories": ["leatherworker", "woodworker"],
+    "ranged": true,
+    "requiresAmmo": true,
+    "deals": 1
+  },
+  {
+    "name": "Recipe: Angelic Rest",
+    "type": "feature",
+    "id": "39f7784c-d9c3-4828-8a37-5eea2eab2c2a",
+    "grantsAbilities": ["Gain a full reset"],
+    "advantage": true
+  },
+  {
+    "name": "Climbing Kit",
+    "type": "equipment",
+    "id": "c78b8279-39aa-4e02-8a9c-b2c6addc122f",
+    "advantageMsg": " grants advantage to climbing checks",
+    "advantage": true,
+    "price": 20,
+    "shopCategories": ["delving-supplies", "survival-outfitters"]
+  },
+  {
+    "name": "Crowbar",
+    "type": "equipment",
+    "id": "ff209290-5bab-425a-827d-396ecaffa58f",
+    "deals": 1,
+    "price": 9,
+    "shopCategories": ["blacksmith", "shady-dealer", "delving-supplies"]
+  },
+  {
+    "name": "Druidcraft",
+    "type": "feature",
+    "id": "afa7f9cd-5751-4276-91c7-fbcb42800eae",
+    "instructions": "Whispering to the earth, you create a harmless tiny natural miracle. There are an infinite number of possibilities, but here are some examples: - Make a flower blossom - Create a puff of wind, the sound of a small animal, or the faint odor of a skunk - Light or snuff out a candle, a torch, or a small campfire.",
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/Cattegy_a_tiny_seedling_emerging_from_the_soil._fantasy_art_501af177-5e6f-49db-a9db-ca1b230ed2f9.png",
+    "stretchImgY": true
+  },
+  {
+    "name": "Golem Crystal",
+    "type": "equipment",
+    "id": "d3e33429-159f-48b1-ad32-02c1eb86448c",
+    "price": 200,
+    "instructions": "Can be used by an artificer to animate a golem, worth 200c",
+    "shopCategories": ["arcane-shop"]
+  },
+  {
+    "name": "Herbalist's Pack",
+    "type": "equipment",
+    "id": "2fcd244f-24d7-4222-b996-01de4adf9ea3",
+    "instructions": "Contains items needed to collect herbs and brew teas, as well as cook's utensils, a mess kit, traveler's clothes, a tinderbox, and 50 ft of rope. All herbs you collect take no gear slots.",
+    "shopCategories": ["apothecary", "survival-outfitters"],
+    "price": 20,
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/leverwood_A_herbalists_pack_in_the_style_of_a_dd_5e_magic_item__8b5ceb50-c260-44da-a233-e9b0fc238ef7.png"
+  },
+  {
+    "name": "Javelin",
+    "type": "equipment",
+    "id": "7ca74b57-9b50-4502-be07-b6708b57d2c9",
+    "deals": 1,
+    "shopCategories": ["blacksmith", "woodworker"],
+    "price": 10
+  },
+  {
+    "name": "Load-bearing",
+    "type": "training",
+    "id": "9c3b395d-1286-4480-b13f-95c37ba428f1",
+    "instructions": "You have a powerful build. You can carry an extra 10 items."
+  },
+  {
+    "name": "Nature's Remedies Set",
+    "type": "equipment",
+    "id": "a80af14c-a768-49e9-b1be-414f32c6e6f4",
+    "instructions": "**Learning recipes.** You can either choose to brew a recipe you already know, or experiment with learning a new one. Make an NTU check with a medium difficulty DC. On a success, you learn and brew a new remedy. The herb bundle is always consumed. \n\n**Brew tonic.** With training, no check. The herb bundle is always consumed. You can spend 1 hour brewing a remedy and sharing it over a conversation with a number of people equal to your tier.",
+    "shopCategories": ["apothecary"],
+    "price": 22,
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/192381ac201fb9f703f237957181beb0.png",
+    "padImage": true
+  },
+  {
+    "name": "Quarterstaff",
+    "type": "equipment",
+    "id": "14c8ad3a-3a46-4790-8772-bd48ecc1a95c",
+    "deals": 1,
+    "shopCategories": ["woodworker"],
+    "price": 10
+  },
+  {
+    "name": "Shovel",
+    "type": "equipment",
+    "id": "39c53d53-28c5-413a-a756-b4a90b4284ad",
+    "deals": 1,
+    "shopCategories": ["general-store"],
+    "price": 2
+  },
+  {
+    "name": "Speak with Animals",
+    "type": "feature",
+    "id": "eda488ce-4198-4644-9441-c0104f958626"
+  },
+  {
+    "name": "Wildshape",
+    "type": "feature",
+    "id": "6befeab9-b397-4bf9-bdf2-fc4a603b6482",
+    "instructions": "Become any beast that is 1 less than your current tier, which shares the same mental skills you do, including their pools. When any pool hits zero, you revert to your original form, carrying over extra damage. You must create the creature's stats before the game. Use a d20, a d12, and a d8 for the physical stats, and give it any features equal to two less than your current tier (minimum 0). Costs an amount of wellspring equal to your tier."
+  },
+  {
+    "name": "Wise Wallop",
+    "type": "feature",
+    "id": "503d3d24-2e93-4ea6-b9d1-bb2d283a435e",
+    "instructions": "A melee weapon of your choice uses NTU. No check required."
+  },
+  {
+    "name": "Little bag of sand",
+    "type": "equipment",
+    "id": "ef2dae59-e1fe-4613-9bcd-f1cd275eefb8",
+    "shopCategories": ["arcane-shop"],
+    "price": 1
+  },
+  {
+    "name": "Parchment",
+    "type": "equipment",
+    "id": "966e692a-bff9-4147-9dd2-ab76bac4fd27",
+    "instructions": "1 sheet",
+    "price": 1,
+    "shopCategories": ["arcane-shop"]
+  },
+  {
+    "name": "Bell",
+    "type": "equipment",
+    "id": "c0753619-5d8e-4061-91f4-53844ac39121",
+    "price": 1,
+    "shopCategories": ["arcane-shop", "survival-outfitters"]
+  },
+  {
+    "name": "Steel Mirror",
+    "type": "equipment",
+    "id": "bad86155-a988-4e1f-bc0f-5f92a54fad5a",
+    "price": 5,
+    "shopCategories": ["general-store", "tinker", "delving-supplies"]
+  },
+  {
+    "name": "Calligrapher's Supplies",
+    "type": "equipment",
+    "id": "d65acbdd-5f70-4caa-9d9a-9fd188cbc46d",
+    "instructions": "",
+    "shopCategories": ["arcane-shop", "bookstore"],
+    "price": 10
+  },
+  {
+    "name": "Merchant's Scale",
+    "type": "equipment",
+    "id": "2973ddfb-7cea-43fe-b446-f071d567ef6c",
+    "instructions": "A scale includes a small balance, pans, and a suitable assortment of weights up to 2 pounds. With it, you can measure the exact weight of small objects, such as raw precious metals or trade goods, to help determine their worth.",
+    "price": 20,
+    "shopCategories": ["tinker", "general-store"]
+  },
+  {
+    "name": "Hourglass",
+    "type": "equipment",
+    "id": "2f2c3f55-bba7-4eae-b888-1b1e233229ce",
+    "price": 25
+  },
+  {
+    "name": "Manacles",
+    "type": "equipment",
+    "id": "8064c37d-7f77-4d08-9b9c-c38f80218eb5",
+    "shopCategories": ["shady-dealer", "tinker"],
+    "instructions": "",
+    "price": 10
+  },
+  {
+    "name": "Grappling Hook",
+    "type": "equipment",
+    "id": "dda5bc45-67a4-4261-a9e4-4e80bbfc0acd",
+    "price": 10,
+    "shopCategories": ["tinker", "delving-supplies"]
+  },
+  {
+    "name": "Blank Spellbook",
+    "type": "equipment",
+    "id": "d7164443-ae45-4e86-a7ff-e7019eab1092",
+    "shopCategories": ["arcane-shop", "bookstore"],
+    "price": 50
+  },
+  {
+    "name": "Chain Shirt",
+    "type": "equipment",
+    "id": "8ec46fba-e1be-48f6-8d33-516fc7156dcf",
+    "shopCategories": ["blacksmith"],
+    "price": 50,
+    "cost": 1,
+    "reduceDamage": 3
+  },
+  {
+    "name": "Handaxe",
+    "type": "equipment",
+    "id": "a73a72bb-5240-43b3-9a15-0eddadbf4a84",
+    "shopCategories": ["blacksmith"],
+    "price": 16,
+    "deals": 1
+  },
+  {
+    "name": "Mace",
+    "type": "equipment",
+    "id": "5a544a73-3d44-4164-825c-5d54733b4777",
+    "price": 25,
+    "shopCategories": ["blacksmith"],
+    "deals": 1
+  },
+  {
+    "name": "Shortbow",
+    "type": "equipment",
+    "id": "8affda94-fec8-4d31-971d-43ca35856ab5",
+    "price": 16,
+    "shopCategories": ["bowyer"]
+  },
+  {
+    "name": "Greatsword",
+    "type": "equipment",
+    "id": "376586e5-be36-4ac0-9f2d-2def670bb83c",
+    "deals": 2,
+    "price": 65,
+    "shopCategories": ["blacksmith"]
+  },
+  {
+    "name": "Scimitar",
+    "type": "equipment",
+    "id": "03678594-3a7d-4350-b675-e05ed2bc025a",
+    "shopCategories": ["blacksmith"],
+    "price": 30,
+    "deals": 2
+  },
+  {
+    "name": "Morningstar",
+    "type": "equipment",
+    "id": "50b07c50-d1d5-4227-a6d9-5228e327d659",
+    "price": 50,
+    "deals": 2,
+    "shopCategories": ["blacksmith"]
+  },
+  {
+    "name": "Halberd",
+    "type": "equipment",
+    "id": "5eddbdec-1d0e-4715-a173-e717217185f8",
+    "price": 60,
+    "deals": 2,
+    "shopCategories": ["blacksmith"]
+  },
+  {
+    "name": "Battleaxe",
+    "type": "equipment",
+    "id": "01635f6a-8340-4f43-af4c-2dc8344d67b2",
+    "price": 50,
+    "shopCategories": ["blacksmith"],
+    "deals": 2
+  },
+  {
+    "name": "Longsword",
+    "type": "equipment",
+    "id": "af066ef4-8267-4de5-a4c5-4209676141f0",
+    "deals": 2,
+    "price": 40,
+    "shopCategories": ["blacksmith"]
+  },
+  {
+    "name": "Heavy Crossbow",
+    "type": "equipment",
+    "id": "14ecbea3-3aa1-44ca-8f0b-73174d96fe46",
+    "shopCategories": ["tinker", "woodworker"],
+    "price": 65,
+    "deals": 2
+  },
+  {
+    "name": "Longbow",
+    "type": "equipment",
+    "id": "223b86fb-3317-4d00-beb3-d46b29cac883",
+    "shopCategories": ["bowyer"],
+    "price": 50,
+    "deals": 2
+  },
+  {
+    "name": "Feed",
+    "type": "equipment",
+    "id": "f9987e4d-3850-4cc3-b210-c4c8a19eaa56",
+    "price": 1,
+    "instructions": "1 day of animal feed",
+    "shopCategories": ["pet-store", "stables"]
+  },
+  {
+    "name": "Bit and Bridle",
+    "type": "equipment",
+    "id": "b0ded3ed-f4a8-4ae7-a1f9-f0868a9a29b9",
+    "price": 2,
+    "shopCategories": ["pet-store", "stables"]
+  },
+  {
+    "name": "Saddlebags",
+    "type": "equipment",
+    "id": "51b037ba-f9c4-4d03-b3a1-bf6f6db4ee86",
+    "price": 4,
+    "shopCategories": ["pet-store"]
+  },
+  {
+    "name": "Saddle",
+    "type": "equipment",
+    "id": "04c41692-24b0-4ca7-9365-46421a1168ed",
+    "price": 10,
+    "shopCategories": ["pet-store"]
+  },
+  {
+    "name": "Donkey",
+    "type": "trinket",
+    "id": "54d85107-be56-4b17-83d1-d7cb26fc5ad6",
+    "price": 8,
+    "instructions": "",
+    "shopCategories": ["pet-store", "stables"]
+  },
+  {
+    "name": "Mastiff",
+    "type": "trinket",
+    "id": "8528229e-7ede-4f72-874c-31c5a251a604",
+    "price": 25,
+    "shopCategories": ["pet-store", "stables"],
+    "instructions": "Small creatures can ride a mastiff as a mount"
+  },
+  {
+    "name": "Pony",
+    "type": "trinket",
+    "id": "7de822b7-603b-4fcd-bd8f-b8766bbb5906",
+    "price": 30,
+    "shopCategories": ["pet-store", "stables"]
+  },
+  {
+    "name": "Camel",
+    "type": "trinket",
+    "id": "bebbe185-e65c-41e0-a31e-4f9914b7b69d",
+    "price": 50,
+    "shopCategories": ["pet-store", "stables"]
+  },
+  {
+    "name": "Horse",
+    "type": "trinket",
+    "id": "8a105662-005f-4dc2-805a-14c1b096e3ef",
+    "price": 75,
+    "shopCategories": ["pet-store", "stables"]
+  },
+  {
+    "name": "Elephant",
+    "type": "equipment",
+    "id": "7c6c592a-d09e-4bb8-ab31-cb6577f77a82",
+    "price": 200
+  },
+  {
+    "name": "Barding",
+    "type": "equipment",
+    "id": "3d590e1a-3194-451f-be0a-17548431dec1",
+    "instructions": "Armor for a mount. Cost 4x the normal armor price.",
+    "shopCategories": ["blacksmith", "pet-store"],
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/leverwood_fantary_art_of_a_horse_wearing_armor_in_the_style_of__dc5c4557-e03b-4b77-b09b-0a1019c9c3c4.png",
+    "stretchImgY": true
+  },
+  {
+    "name": "Giant Riding Frog",
+    "type": "trinket",
+    "id": "eb6487f3-6170-439b-93dc-5cbce60f8e7b",
+    "price": 30,
+    "shopCategories": ["pet-store", "stables"]
+  },
+  {
+    "name": "Robes",
+    "type": "equipment",
+    "id": "8d6a94dd-5b4b-4394-a342-5c36b871b52b",
+    "price": 1,
+    "shopCategories": ["temple", "clothier"]
+  },
+  {
+    "name": "Wooden Stake",
+    "type": "equipment",
+    "id": "af9ddf2e-d24c-4df6-a642-041e95a93fcf",
+    "price": 1,
+    "shopCategories": ["temple"]
+  },
+  {
+    "name": "Holy Symbol",
+    "type": "trinket",
+    "id": "96eb5972-e5dd-4383-ad5b-68a11624ca0a",
+    "price": 3,
+    "shopCategories": ["temple"]
+  },
+  {
+    "name": "Priest's Pack",
+    "type": "equipment",
+    "id": "1388e166-5786-41cf-9c96-3c2afb55599c",
+    "shopCategories": ["temple"],
+    "price": 19,
+    "instructions": "Includes a blanket, a tinderbox, an alms box, vestments, and a waterskin"
+  },
+  {
+    "name": "Status Signets",
+    "type": "equipment",
+    "id": "67c36c3f-f0dd-4b31-8dfd-1e6330235f7c",
+    "instructions": "These silver rings often come in pairs and indicate the well-being of its wearer. If you and another friendly creature you can see are wearing these rings within three zones each other, you are magically aware of the other creature's current number of hit points and condition.",
+    "grantsAbilities": [""],
+    "shopCategories": ["temple", "jeweller"],
+    "price": 20
+  },
+  {
+    "name": "Oathsworn",
+    "type": "training",
+    "instructions": "You have sworn a sacred oath, and its power grants you mystical ability. Your spellcasting modifier is **NTU**.\n\n***Pushing the limit.*** If you are out of wellspring, you can attempt to cast again. Make a check with a target of 10 + the feature's level. On a failure, instantly drop to 0 Social pool.\n\n***Breaking your oath.*** Acting against this oath sacrifices your ability to cast spells until you pay penance.",
+    "id": "8d04e0b0-ada5-4df4-83f7-885059328c11",
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/Paladin777.webp",
+    "stretchImgY": true
+  },
+  {
+    "name": "Infestation",
+    "type": "equipment",
+    "id": "986a3c24-4dd3-44c2-b53e-6c495cdc4607",
+    "grantsAbilities": [
+      "the target spends its next turn running to a nearby zone"
+    ],
+    "deals": 1,
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/Cattegy_an_mean_human_man_is_screaming_and_covered_by_a_swarm_o_6d3069a3-7d26-4c4a-b6c1-72ffac092a6f.png",
+    "stretchImgY": true
+  },
+  {
+    "name": "Sleep",
+    "type": "feature",
+    "id": "2a033c1c-fb76-4547-b3dd-02de0e09be88",
+    "stunned": true,
+    "onFailTakeDamage": 1,
+    "castTime": 0,
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/sleep.jpg",
+    "stretchImgY": true,
+    "aoe": false
+  },
+  {
+    "name": "Mana Shield",
+    "type": "equipment",
+    "id": "a8afd218-c73a-4621-b133-d6bf24295270",
+    "advantageMsg": "advantage and training on defense rolls",
+    "advantage": true,
+    "duration": 0,
+    "durationMsg": "",
+    "noCheck": true,
+    "onFailTakeDamage": 0,
+    "instructions": "For 1 turn you have advantage and training on defense rolls. No check is required to cast this spell and you may do so after a failed defense",
+    "specific": true,
+    "specificMsg": "for 1 turn",
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/cover-07-2.webp",
+    "stretchImgY": true
+  },
+  {
+    "name": "Poisonous Skin",
+    "type": "feature",
+    "id": "f04cf5ce-f210-4e5a-9b80-8307e2580886",
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/Cattegy_A_poison_frog_humanoid_with_glistening_poisonous_skin_w_24e0a5a7-5273-4cff-a821-8a5f427bfec1.png",
+    "stretchImgY": true,
+    "duration": 1,
+    "durationMsg": "you remain poisonous until this feature has damaged 3 people or 24 hours have passed",
+    "noCheck": true,
+    "deals": 1,
+    "specific": true,
+    "specificMsg": "if anyone makes direct skin contact with you they are poisoned",
+    "notes": "",
+    "instructions": "",
+    "trainedMsg": "",
+    "castTimeMsg": "activates after soaking in water for 1 hour",
+    "castTime": 1
+  },
+  {
+    "name": "Rite of the Blood Moon",
+    "type": "feature",
+    "id": "37e08a35-b5fa-4971-97a5-4b059b3b2662",
+    "instructions": "This powerful ritual curse can only be cast under a full moon. Upon an altar outdoors, a creature must be sacrificed, their blood drained, and their heart eaten. No roll is required.\n\nAll allies who participate in the ritual transform into bloodthirsty monsters who solve every problem with violence, spare no mercy for any enemy, and do not rest. For the duration, they double all physical pools, and the transformation lasts until the next midnight.",
+    "noCheck": true,
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/Cattegy_someone_is_sacrificed_upon_an_altar_undernealth_a_red_m_11c42ba6-b6de-45dd-84b3-1616a78be924.png",
+    "stretchImgY": true
+  },
+  {
+    "name": "Glyph Crafter",
+    "type": "feature",
+    "id": "b386b282-0152-43c5-85f7-6b940e44c9b5",
+    "instructions": "When you come across a magical material, you can learn to cast one of your spells as a ritual. Each new material unlocks 1 spell.\n\n***New Glyphs.*** It takes an hour to harvest, create the chalk, and design the glyph. Uses of the magical chalk are not tracked.\n\n***Casting.*** Drawing the glyph adds 10 minutes to the typical cast time of the spell and costs half the normal wellspring, rounded down.",
+    "castTime": 1,
+    "castTimeMsg": "adds 10 minutes to the typical cast time",
+    "wellspringRecover": 2,
+    "consumable": false,
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/Cattegy_A_top-downview_of_a_magical_arcane_glowing_glyph_on_a_s_760341c7-5970-49a4-a453-6a532097425f.png",
+    "stretchImgY": true
+  },
+  {
+    "name": "Insect Repellent Incense",
+    "type": "equipment",
+    "id": "3c3fc8f8-27a6-4353-b6ff-f20bbd05624f",
+    "price": 5,
+    "instructions": "",
+    "grantsAbilities": [
+      "When lit, it burns for 8 hours and repels normal insects in its zone."
+    ],
+    "shopCategories": ["survival-outfitters"],
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/leverwood_fantasy_illustration_of_a_simple_hanging_censer_on_a__2b8faf72-0c4d-4074-a0df-31f00ea3a029.png",
+    "stretchImgY": true
+  },
+  {
+    "name": "Insect Repellent Salve",
+    "type": "equipment",
+    "id": "90137836-fa81-43bb-af3c-66af8fc4d75f",
+    "price": 1,
+    "consumable": true,
+    "instructions": "contains an odorless grease that protects wearer against insects for 24 hours. The salve is waterproof. Single use.",
+    "shopCategories": ["survival-outfitters"],
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/leverwood_fantasy_illustration_of_a_jar_of_ointment_on_a_white__4d33e513-d467-4789-a1ac-4092201c138d.png"
+  },
+  {
+    "name": "Tinderbox",
+    "type": "equipment",
+    "id": "5daaeb3f-8b9f-489f-981c-f928668068cf",
+    "shopCategories": ["survival-outfitters", "delving-supplies", "chandlery"],
+    "price": 1,
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/leverwood_fantasy_illustration_of_a_tinderbox_on_a_white_backgr_4297c2af-655d-4830-b279-f90982fcff1a.png"
+  },
+  {
+    "name": "Fishing Tackle",
+    "type": "equipment",
+    "id": "2a7f967e-7737-4c44-9e5f-2fbc71f3bdfa",
+    "price": 10,
+    "shopCategories": ["survival-outfitters", "dockside"],
+    "instructions": "This kit includes a wooden rod, silken line, corkwood bobbers, steel hooks, lead sinkers, and velvet lures."
+  },
+  {
+    "name": "Signal Whistle",
+    "type": "equipment",
+    "id": "b151b147-6812-47c1-9104-22dedd3f5100",
+    "price": 1,
+    "shopCategories": ["survival-outfitters"]
+  },
+  {
+    "name": "Traveler's Clothes",
+    "type": "equipment",
+    "id": "90b26be2-e044-485e-ab2f-5eb6775cbe02",
+    "shopCategories": ["survival-outfitters", "clothier"],
+    "price": 2
+  },
+  {
+    "name": "Snowshoes",
+    "type": "equipment",
+    "id": "2733789c-a9d2-46f1-ae41-58e02575ce64",
+    "price": 2,
+    "shopCategories": ["survival-outfitters"]
+  },
+  {
+    "name": "Tent, Two-Person",
+    "type": "equipment",
+    "id": "575cc143-5ac4-4406-841f-9efb9df85839",
+    "price": 10
+  },
+  {
+    "name": "Mess Kit",
+    "type": "equipment",
+    "id": "c4fdc8e6-c1a7-4017-82d2-96add6f69f94",
+    "shopCategories": ["survival-outfitters", "delving-supplies"],
+    "price": 5
+  },
+  {
+    "name": "Candle of the Deep",
+    "type": "equipment",
+    "id": "0cb8aac2-f6d3-4cf1-97a2-2625ad369884",
+    "instructions": "The flame of this candle is not extinguished when immersed in water. It gives off light and heat like a normal candle. Lasts for 8 hours.",
+    "shopCategories": ["survival-outfitters", "dockside"],
+    "price": 10,
+    "frontImg": "https://julietfoundryvtt.s3.amazonaws.com/art/anira_cards/leverwood_fantasy_illustration_of_a_magic_candle_underwater_in__ca4ffd42-d525-4fb9-94f9-fb0c6b7e2db0.png",
+    "stretchImgY": true
+  },
+  {
+    "name": "Clothing, cold weather",
+    "type": "equipment",
+    "id": "77d47135-3af8-4738-92b4-44ac5c084664",
+    "shopCategories": ["survival-outfitters", "clothier"],
+    "price": 15
+  },
+  {
+    "name": "Drowner's Pearl",
+    "type": "equipment",
+    "id": "576daed1-6ca7-47c1-81b5-20f96f0c49d6",
+    "frontImg": "https://julietfoundryvtt.s3.us-east-1.amazonaws.com/art/obsidian/Drowners-Pearl_No_Label%201.png",
+    "shopCategories": ["dockside", "survival-outfitters"],
+    "instructions": "This magic, sickly pearl contains a fragment of life absorbed from a body that sank to the bottom of the sea. While holding this pearl in your mouth, you can survive for 1 additional minute before you suffocate when you run out of breath or begin to choke underwater. Once this property has been used, the pearl turns to dust and is destroyed.",
+    "grantsAbilities": ["", "", "", ""],
+    "consumable": true,
+    "price": 50
+  },
+  {
+    "name": "Crampons",
+    "type": "equipment",
+    "id": "28e08bfb-7c42-47dc-972d-eba5361f8b1a",
+    "price": 5,
+    "shopCategories": ["survival-outfitters"]
+  },
+  {
+    "name": "Hempen Rope",
+    "type": "equipment",
+    "id": "603561e6-c0dd-44dc-97b8-a670961313fc",
+    "price": 5,
+    "shopCategories": [
+      "delving-supplies",
+      "general-store",
+      "survival-outfitters"
+    ],
+    "instructions": "50 ft."
+  },
+  {
+    "name": "Cook's Utensils",
+    "type": "equipment",
+    "id": "c8ddadc8-7ca9-4222-8446-22fec307828c",
+    "shopCategories": ["general-store"],
+    "price": 5,
+    "instructions": "Cook’s utensils include a metal pot, knives, forks, a stirring spoon, and a ladle."
+  },
+  {
+    "name": "Woodcarver's Tools",
+    "type": "equipment",
+    "id": "9ca45151-be33-4c0b-9818-1942b685bcad",
+    "price": 10,
+    "shopCategories": ["general-store", "woodworker"],
+    "instructions": "Woodcarver’s tools consist of a knife, a gouge, and a small saw."
+  },
+  {
+    "name": "Cobbler's Tools",
+    "type": "equipment",
+    "id": "96f3a3da-3276-4d3d-9428-0ac746a8f10a",
+    "shopCategories": ["general-store"],
+    "price": 15,
+    "instructions": "Cobbler’s tools consist of a hammer, an awl, a knife, a shoe stand, a cutter, spare leather, and thread."
+  },
+  {
+    "name": "Leatherworker's Tools",
+    "type": "equipment",
+    "id": "e362b540-df0b-4b91-a44c-c879d534e77c",
+    "price": 15,
+    "shopCategories": ["leatherworker", "general-store"],
+    "instructions": "Leatherworker’s tools include a knife, a small mallet, an edger, a hole punch, thread, and leather scraps."
+  },
+  {
+    "name": "Pitchfork",
+    "type": "equipment",
+    "id": "91f7387a-b34e-4574-bddf-87f39fe83539",
+    "shopCategories": ["general-store"],
+    "price": 2,
+    "deals": 1
+  },
+  {
+    "name": "Brewer's Supplies",
+    "type": "equipment",
+    "id": "c85b45e9-886b-4892-9c43-f31bfb200cd2",
+    "price": 20,
+    "shopCategories": ["general-store"],
+    "instructions": "Brewer’s supplies include a large glass jug, a quantity of hops, a siphon, and several feet of tubing."
+  },
+  {
+    "name": "Smith's Tools",
+    "type": "equipment",
+    "id": "5124c2ad-c013-4ab0-a0e0-a184bd604132",
+    "price": 20,
+    "shopCategories": ["blacksmith", "general-store"],
+    "deals": 0,
+    "instructions": " Smith’s tools include hammers, tongs, charcoal, rags, and a whetstone."
+  },
+  {
+    "name": "Dragonchess Set",
+    "type": "equipment",
+    "id": "cb3e7860-e042-4235-be2d-7b0d556d56b7",
+    "price": 5,
+    "shopCategories": ["entertainment"]
+  },
+  {
+    "name": "Playing Card Set",
+    "type": "equipment",
+    "id": "21afa42f-96c1-4a55-8cca-fc5ef0ff1a0b",
+    "price": 4,
+    "shopCategories": ["entertainment"]
+  },
+  {
+    "name": "Painter's Supplies",
+    "type": "equipment",
+    "id": "2555170d-21cb-4718-b9f7-44285fc366d4",
+    "shopCategories": ["entertainment"],
+    "price": 10
+  },
+  {
+    "name": "Instrument",
+    "type": "equipment",
+    "id": "8c498e11-87c9-4ea3-81ae-f8b874c00e2a",
+    "price": 10,
+    "shopCategories": ["entertainment"]
+  },
+  {
+    "name": "Disguise Kit",
+    "type": "equipment",
+    "id": "0edcd91f-1089-4431-b463-36cf27f0c1a8",
+    "shopCategories": ["entertainment", "shady-dealer", "clothier"],
+    "price": 25
+  },
+  {
+    "name": "Band of Loyalty",
+    "type": "equipment",
+    "id": "37f7623f-d7d5-4012-a5c5-49036cbfeee7",
+    "price": 50,
+    "instructions": "If you are reduced to zero hit points while attuned to a band of loyalty, you instantly die. These rings are favored by spies who can’t afford to fall into enemy hands.",
+    "shopCategories": ["shady-dealer"],
+    "grantsAbilities": ["", ""]
+  },
+  {
+    "name": "Lock of Trickery",
+    "type": "equipment",
+    "id": "cc64e427-7423-4783-ba37-88b4ee451664",
+    "instructions": "This lock appears to be an ordinary lock and comes with a single key. The tumblers in this lock magically adjust to thwart burglars. Dexterity checks made to pick the lock have disadvantage.",
+    "grantsAbilities": ["", ""],
+    "shopCategories": ["shady-dealer"],
+    "price": 50
+  },
+  {
+    "name": "Mystery Key",
+    "type": "equipment",
+    "id": "b30d6a54-b333-456a-a04e-1e3a2ca96041",
+    "instructions": "A question mark is worked into the head of this key. The key has a 5 percent chance of unlocking any lock into which it’s inserted. Once it unlocks something, the key disappears.",
+    "grantsAbilities": ["", ""],
+    "shopCategories": ["shady-dealer"],
+    "price": 50
+  },
+  {
+    "name": "Oaken Candle",
+    "type": "equipment",
+    "id": "5300942b-2a98-42e7-a76f-fb20533906bc",
+    "instructions": "After burning for 8 hours, the candle is destroyed and an oak tree 30 feet tall grows in its place over the course of 10 minutes. If there isn't enough room for a tree to grow or the candle isn't placed on solid ground, the candle is destroyed without creating a tree.\n",
+    "price": 25,
+    "shopCategories": ["apothecary"]
+  }
+]

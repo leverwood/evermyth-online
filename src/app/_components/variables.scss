@@ -1,0 +1,19 @@
+
+@import "./colors";
+
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
+
+$unit: 8px;
+$button-font-size: 12px;
+
+// bootstrap overrides
+
+$btn-font-weight: bold;
+
+// TODO: Get these in as webfonts
+$font-sans: Glacial Indifference, Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
+$font-serif: Quattrocento, Georgia,Times,Times New Roman,serif;

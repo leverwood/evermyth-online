@@ -1,4 +1,6 @@
+import PageLayout from "./_components/PageLayout";
+
 function Loading() {
-  return <div>Loading...</div>;
+  return <PageLayout></PageLayout>;
 }
 export default Loading;

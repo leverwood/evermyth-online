@@ -1,3 +1,4 @@
+import PageLayout from "../_components/PageLayout";
 import { getUsernameFromSession } from "./actions";
 
 async function ProfilePage() {
@@ -5,10 +6,10 @@ async function ProfilePage() {
   if (!userPK) return null;
 
   return (
-    <div>
+    <PageLayout>
       <h1>Profile</h1>
       <pre>{userPK}</pre>
-    </div>
+    </PageLayout>
   );
 }
 export default ProfilePage;
