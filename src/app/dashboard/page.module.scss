@@ -1,0 +1,15 @@
+@import '../_components/variables';
+
+.pageLayout {
+  background-color: $paper1;
+  background-image: url('../_components/paper-texture.jpg')
+}
+
+.content {
+  width: 100%;
+  max-width: $breakpoint-lg;
+  margin: 0 auto;
+  background-color: white;
+  height: 100%;
+  flex-grow: 1;
+}

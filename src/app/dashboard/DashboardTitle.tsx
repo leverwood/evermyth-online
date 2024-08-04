@@ -7,8 +7,8 @@ export default function DashboardTitle({ userPK }: { userPK: string }) {
   const { user } = useUser();
 
   return (
-    <main>
+    <>
       <h1>Hello, {userPK}</h1>
-    </main>
+    </>
   );
 }
