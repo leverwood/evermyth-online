@@ -46,7 +46,7 @@ $campaignPositionSM: $containerPaddingSM + $logoPadding + $logoWidth + ($unit * 
 .container {
   width: 100%;
   box-sizing: content-box;
-  max-width: $breakpoint-xl;
+  max-width: $breakpoint-lg;
   margin: 0 auto;
   padding: 0 $containerPaddingXS;
   display: flex;

@@ -15,11 +15,13 @@ async function DashboardPage() {
 
   return (
     <PageLayout className={styles.pageLayout}>
-      <div className={styles.content}>
-        <DashboardTitle userPK={session.user.userPK} />
-        <Suspense fallback={<div>Loading...</div>}>
-          <CampaignList />
-        </Suspense>
+      <DashboardTitle userPK={session.user.userPK} />
+      <div className={styles.body}>
+        <div className={styles.content}>
+          <Suspense fallback={<div>Loading...</div>}>
+            <CampaignList />
+          </Suspense>
+        </div>
       </div>
     </PageLayout>
   );

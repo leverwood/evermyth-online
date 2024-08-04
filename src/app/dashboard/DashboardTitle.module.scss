@@ -1,0 +1,12 @@
+@import '../_components/variables';
+
+.title {
+  width: 100%;
+  max-width: $breakpoint-lg;
+  margin: 0 auto;
+  font-family: $font-serif;
+  color: $ink7;
+  font-size: 36px;
+  margin-top: $unit * 6;
+  padding: 0 $unit * 2;
+}

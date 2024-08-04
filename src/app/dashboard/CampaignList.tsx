@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Button } from "react-bootstrap";
+
+import Button from "@/app/_components/Button";
 import { APIResponse } from "../_data/db-types";
 import { Campaign, UserPK } from "../_data/db-uc-types";
+import styles from "./CampaignList.module.scss";
 
 interface CampaignListProps {}
 
@@ -41,7 +43,12 @@ const CampaignList = ({}: CampaignListProps) => {
 
   return (
     <div>
-      <h2>Campaigns</h2>
+      <h2 className={styles.title}>
+        <span>Campaigns</span>
+        <Button variant="primary" href="/campaigns/add">
+          Create new
+        </Button>
+      </h2>
       {!campaigns ? (
         <p>Loading...</p>
       ) : !campaigns.length ? (
@@ -55,9 +62,6 @@ const CampaignList = ({}: CampaignListProps) => {
           </div>
         ))
       )}
-      <Link href="/campaigns/add">
-        <Button variant="primary">Create new</Button>
-      </Link>
     </div>
   );
 };

@@ -5,11 +5,16 @@
   background-image: url('../_components/paper-texture.jpg')
 }
 
-.content {
+.body {
   width: 100%;
-  max-width: $breakpoint-lg;
-  margin: 0 auto;
   background-color: white;
   height: 100%;
   flex-grow: 1;
+  margin-top: $unit;
+  padding: $unit * 2;
+}
+
+.content {
+  max-width: $breakpoint-lg;
+  margin: 0 auto;
 }

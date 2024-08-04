@@ -1,0 +1,12 @@
+@import '../_components/variables';
+
+.title {
+  font-family: $font-serif;
+  color: $ink7;
+  font-size: 32px;
+  margin-top: $unit * 4;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  gap: $unit * 3;
+}

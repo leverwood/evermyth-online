@@ -1,8 +1,10 @@
 import { ReactNode } from "react";
+import cx from "classnames";
+
 import styles from "./Button.module.scss";
 
 interface ButtonProps {
-  href: string;
+  href?: string;
   variant?: string;
   className?: string;
   children: ReactNode;
@@ -12,14 +14,24 @@ const Button = ({ href, variant, children, className }: ButtonProps) => {
   return href ? (
     <a
       href={href}
-      className={`${styles.root} ${
-        variant ? styles[variant] : styles.primary
-      } ${className ? className : ""}`}
+      className={cx(
+        styles.root,
+        variant ? styles[variant] : styles.primary,
+        className
+      )}
     >
       {children}
     </a>
   ) : (
-    <button>{children}</button>
+    <button
+      className={cx(
+        styles.root,
+        variant ? styles[variant] : styles.primary,
+        className
+      )}
+    >
+      {children}
+    </button>
   );
 };
 

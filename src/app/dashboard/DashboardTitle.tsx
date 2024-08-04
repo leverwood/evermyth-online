@@ -1,14 +1,7 @@
 "use client";
 
-import { useUser } from "@auth0/nextjs-auth0/client";
-import { UserSession } from "../_data/db-uc-types";
+import styles from "./DashboardTitle.module.scss";
 
 export default function DashboardTitle({ userPK }: { userPK: string }) {
-  const { user } = useUser();
-
-  return (
-    <>
-      <h1>Hello, {userPK}</h1>
-    </>
-  );
+  return <h1 className={styles.title}>Dashboard</h1>;
 }
