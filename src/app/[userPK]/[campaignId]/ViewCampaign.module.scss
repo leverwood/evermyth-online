@@ -1,0 +1,6 @@
+@import "../../_components/variables.scss";
+
+.root {
+  @include containerMd;
+  padding-top: $unit * 4;
+}

@@ -1,11 +1,12 @@
 "use client";
+import { useRouter } from "next/navigation";
+import { useCallback, useState } from "react";
+import { Alert, Button } from "react-bootstrap";
 
 import PageTitle from "@/app/_components/PageTitle";
 import { APIResponse } from "@/app/_data/db-types";
 import { Campaign } from "@/app/_data/db-uc-types";
-import { useRouter } from "next/navigation";
-import { useCallback, useState } from "react";
-import { Alert, Button } from "react-bootstrap";
+import styles from "./EditCampaign.module.scss";
 
 interface EditCampaignProps {
   campaign: Campaign;
@@ -51,7 +52,7 @@ const EditCampaign = ({ campaign }: EditCampaignProps) => {
   }, [campaign.pk, router]);
 
   return (
-    <main>
+    <main className={styles.root}>
       <PageTitle title={campaign.data.name} />
       {message && (
         <Alert variant={validity === "invalid" ? "danger" : "info"}>

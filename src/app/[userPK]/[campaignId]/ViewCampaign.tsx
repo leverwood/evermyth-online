@@ -1,4 +1,5 @@
 import { Campaign } from "@/app/_data/db-uc-types";
+import styles from "./ViewCampaign.module.scss";
 
 interface ViewCampaignProps {
   campaign: Campaign;
@@ -6,9 +7,9 @@ interface ViewCampaignProps {
 
 const ViewCampaign = ({}: ViewCampaignProps) => {
   return (
-    <div>
+    <main className={styles.root}>
       <h1>View Campaign</h1>
-    </div>
+    </main>
   );
 };
 

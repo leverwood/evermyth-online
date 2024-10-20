@@ -7,6 +7,7 @@ import Button from "@/app/_components/Button";
 import { APIResponse } from "../_data/db-types";
 import { Campaign, UserPK } from "../_data/db-uc-types";
 import styles from "./CampaignList.module.scss";
+import CardImage from "../_components/CardImage";
 
 interface CampaignListProps {}
 
@@ -49,19 +50,22 @@ const CampaignList = ({}: CampaignListProps) => {
           Create new
         </Button>
       </h2>
-      {!campaigns ? (
-        <p>Loading...</p>
-      ) : !campaigns.length ? (
-        <p>You don&apos;t have any campaigns yet.</p>
-      ) : (
-        campaigns.map((campaign) => (
-          <div key={campaign.pk}>
-            <Link href={`/${campaign.pk}/`}>
-              <h3>{campaign.data.name}</h3>
-            </Link>
-          </div>
-        ))
-      )}
+      <div className={styles.campaigns}>
+        {!campaigns ? (
+          <p>Loading...</p>
+        ) : !campaigns.length ? (
+          <p>You don&apos;t have any campaigns yet.</p>
+        ) : (
+          campaigns.map((campaign) => (
+            <div className={styles.campaign} key={campaign.pk}>
+              <Link className={styles.campaignLink} href={`/${campaign.pk}/`}>
+                <CardImage src={campaign.data.image} alt={campaign.data.name} />
+                <h3>{campaign.data.name}</h3>
+              </Link>
+            </div>
+          ))
+        )}
+      </div>
     </div>
   );
 };

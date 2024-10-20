@@ -14,7 +14,7 @@ async function DashboardPage() {
   }
 
   return (
-    <PageLayout className={styles.pageLayout}>
+    <PageLayout className={styles.pageLayout} size="full">
       <DashboardTitle userPK={session.user.userPK} />
       <div className={styles.body}>
         <div className={styles.content}>

@@ -10,3 +10,23 @@
   align-items: center;
   gap: $unit * 3;
 }
+
+.campaigns {
+  display: grid;
+  gap: $unit * 2;
+
+  grid-template-columns: 1fr; 
+
+  @media (min-width: $breakpoint-sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: $breakpoint-md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.campaignLink {
+  @include linkReset;
+  font-family: $font-serif; 
+}

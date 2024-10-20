@@ -30,6 +30,7 @@ export interface Campaign
     creatures: ObjectLookup[];
     shops: ObjectLookup[];
     notes: ObjectLookup[];
+    image?: string;
   }> {
   pk: CampaignPK;
 }

@@ -5,16 +5,21 @@
   background-image: url('../_components/paper-texture.jpg')
 }
 
+@mixin contentWrapper {
+  max-width: $breakpoint-lg;
+  margin: 0 auto;
+  padding: $unit * 2;
+}
+
 .body {
   width: 100%;
   background-color: white;
   height: 100%;
   flex-grow: 1;
   margin-top: $unit;
-  padding: $unit * 2;
 }
 
 .content {
-  max-width: $breakpoint-lg;
-  margin: 0 auto;
+  @include contentWrapper;
 }
+
