@@ -5,6 +5,8 @@ import { useState } from "react";
 import { APIResponse } from "@/app/_data/db-types";
 import { useRouter } from "next/navigation";
 
+export interface SetUsernameFormState {}
+
 function SetUsername() {
   const router = useRouter();
   const [message, setMessage] = useState("");

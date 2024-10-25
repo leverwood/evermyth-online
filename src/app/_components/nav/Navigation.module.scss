@@ -50,7 +50,7 @@ $campaignPositionSM: $containerPaddingSM + $logoPadding + $logoWidth + ($unit * 
   margin: 0 auto;
   padding: 0 $containerPaddingXS;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   position: relative;
 
   @media (min-width: $breakpoint-sm) {
@@ -69,6 +69,7 @@ $campaignPositionSM: $containerPaddingSM + $logoPadding + $logoWidth + ($unit * 
   background: transparent;
   border: none;
   outline: none;
+  justify-self: flex-end;
 
   &:hover, &:active {
     color: $ink7;
@@ -82,8 +83,6 @@ $campaignPositionSM: $containerPaddingSM + $logoPadding + $logoWidth + ($unit * 
     display: inline-block;
   }
 }
-
-
 
 .campaignBar {
   position: relative;
@@ -184,4 +183,22 @@ $campaignPositionSM: $containerPaddingSM + $logoPadding + $logoWidth + ($unit * 
   &:hover, &:active {
     color: $paper1;
   }
+}
+
+.navLink {
+  @include linkReset;
+
+  font-family: $font-sans;
+  font-size: 14px;
+  font-weight: 600;
+  color: $ink7;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  padding: $unit $unit * 2;
+}
+
+.spacer {
+  flex-grow: 1;
 }

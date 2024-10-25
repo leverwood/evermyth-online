@@ -84,6 +84,7 @@ function Navigation({
         <Link href={"/rewards"} className={`${styles.navLink}`}>
           Rewards
         </Link>
+        <div className={styles.spacer} />
         <button
           ref={refs.setReference}
           className={styles.hamburger}
