@@ -156,6 +156,7 @@ export const getCampaignsForUser = async (
     data: campaigns,
   };
 };
+
 export async function deleteCampaignDTO(pk: string) {
   const user = await getUser(pk.split("/")[0]);
 

@@ -4,6 +4,7 @@ import { APIResponse } from "../_data/db-types";
 export const TABLE_SUB_USER = "EMSubUsername";
 export const TABLE_USERS_CAMPAIGNS = "EMUsersCampaigns";
 export const TABLE_OBJECTS = "EMObjects";
+export const TABLE_REWARDS = "EMRewards";
 export const SUPERUSERS = ["lilia.everwood@gmail.com"];
 
 const unauthorized: APIResponse = {

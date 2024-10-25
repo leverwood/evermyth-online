@@ -22,12 +22,6 @@ interface ObjectRawCommon<T extends DataBlobRaw = DataBlobRaw> {
   data: T;
 }
 
-export interface Reward
-  extends ObjectRawCommon<{
-    type: "reward";
-    name: string;
-  }> {}
-
 export interface PC
   extends ObjectRawCommon<{
     type: "pc";
@@ -52,5 +46,5 @@ export interface Note
     title: string;
   }> {}
 
-export type Object = Reward | PC | Creature | Shop | Note;
+export type Object = PC | Creature | Shop | Note;
 export type ObjectPK = string;
