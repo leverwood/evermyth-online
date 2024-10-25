@@ -1,4 +1,4 @@
-export function slugify(text: string): string {
+export function slugify(text: string = "-"): string {
   return text
     .toString() // Ensure the input is a string
     .toLowerCase() // Convert to lowercase

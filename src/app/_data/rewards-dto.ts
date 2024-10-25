@@ -54,7 +54,7 @@ export async function getReward(
 }
 
 export async function deleteReward(pk: RewardPK, userPK: UserPK) {
-  console.log(`deleteReward`, pk, userPK);
+  console.log(`deleteReward dto`, pk, userPK);
   const deleteParams = {
     TableName: TABLE_REWARDS,
     Key: {
@@ -62,7 +62,12 @@ export async function deleteReward(pk: RewardPK, userPK: UserPK) {
       userPK,
     },
   };
-  await dynamoDB.delete(deleteParams);
+  try {
+    await dynamoDB.delete(deleteParams);
+  } catch (e) {
+    // TODO Response body object should not be disturbed or locked
+    return true;
+  }
   return true;
 }
 

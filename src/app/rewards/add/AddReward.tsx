@@ -43,7 +43,7 @@ const AddReward = () => {
       } else {
         const pk = result.data.pk;
         router.push(
-          `/${result.data.userPK}/rewards/${pk}/${slugify(result.data.name)}`
+          `/${result.data.userPK}/rewards/${pk}/${slugify(name)}/edit`
         );
       }
     },

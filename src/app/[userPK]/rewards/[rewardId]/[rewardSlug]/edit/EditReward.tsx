@@ -41,7 +41,7 @@ const EditReward = ({ reward }: EditRewardProps) => {
     const result = await deleteRewardFetch(reward.pk);
     if (result.success) {
       // redirect to the user's rewards page
-      router.push(`/${reward.userPK}/rewards`);
+      router.push(`/rewards`);
       return;
     } else {
       setMessage(result.message);
@@ -49,7 +49,7 @@ const EditReward = ({ reward }: EditRewardProps) => {
     }
 
     setSubmitting(false);
-  }, [reward.pk, reward.userPK, router]);
+  }, [reward.pk, router]);
 
   return (
     <main className={styles.root}>

@@ -10,7 +10,7 @@ export async function DELETE(
   request: Request,
   { params }: { params: { rewardPK: string } }
 ) {
-  console.log(`delete reward`, params.rewardPK);
+  console.log(`DELETE reward request`, params.rewardPK);
   const session = await getSession();
   if (!session) {
     return RESPOND_UNAUTHORIZED;

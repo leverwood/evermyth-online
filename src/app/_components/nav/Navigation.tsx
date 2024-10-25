@@ -81,6 +81,9 @@ function Navigation({
           {!campaign && <LogoText className={`${styles.logoText}`} />}
         </Link>
         {campaign && <CampaignBar campaign={campaign} />}
+        <Link href={"/rewards"} className={`${styles.navLink}`}>
+          Rewards
+        </Link>
         <button
           ref={refs.setReference}
           className={styles.hamburger}
